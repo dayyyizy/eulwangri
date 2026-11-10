@@ -62,7 +62,7 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-html.lock{overflow:hidden}
+html.scroll-hold{overflow:hidden}
 body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:anywhere;overflow-x:hidden}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--bg)}
 .wrap{max-width:780px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
@@ -267,7 +267,7 @@ details.fold .fold-in{padding:0 16px 16px;animation:unfold .4s var(--bounce)}
 /* ---------- sheet ---------- */
 .sheet{position:fixed;inset:0;z-index:55;background:var(--scrim);display:flex;align-items:flex-end;justify-content:center;animation:fadein .2s ease}
 @keyframes fadein{from{opacity:0}}
-.sheet-panel{width:min(640px,100%);max-height:92vh;overflow:auto;background:var(--bg);border-radius:26px 26px 0 0;padding-bottom:calc(24px + env(safe-area-inset-bottom,0px));animation:slideup .45s var(--bounce)}
+.sheet-panel{width:min(640px,100%);max-height:92vh;overflow:auto;background:var(--bg);border-radius:26px 26px 0 0;padding-bottom:calc(24px + env(safe-area-inset-bottom,0px));animation:slideup .38s cubic-bezier(.2,.9,.3,1)}
 @keyframes slideup{from{transform:translateY(60%)}to{transform:none}}
 .sheet-panel .scene{height:min(46vw,260px);--base:5.4rem}
 .sh-grab{position:sticky;top:0;z-index:3;display:flex;justify-content:space-between;align-items:center;padding:10px 12px;padding-left:max(12px,env(safe-area-inset-left,0px));padding-right:max(12px,env(safe-area-inset-right,0px));background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(6px)}
@@ -1348,9 +1348,9 @@ function openSheet(s){
   b.append(acts);
   if(pl&&pl.src)b.append(h('p',{class:'sh-src'},'정보 출처: '+pl.src+' · 방문 전 한 번 더 확인해 주세요'));
   p.append(b);
-  $('#sheet').hidden=false;document.documentElement.classList.add('lock');$('#shClose').focus();
+  $('#sheet').hidden=false;document.documentElement.classList.add('scroll-hold');$('#shClose').focus({preventScroll:true});
 }
-function closeSheet(){$('#sheet').hidden=true;document.documentElement.classList.remove('lock');}
+function closeSheet(){$('#sheet').hidden=true;document.documentElement.classList.remove('scroll-hold');}
 
 /* ================= activities (vote) ================= */
 function voteBy(k){return VOTES.filter(function(v){return v.k===k})[0]||null;}
@@ -1798,8 +1798,8 @@ function stepC(){cx.clearRect(0,0,cv.width,cv.height);parts=parts.filter(functio
 
 /* ================= admin ================= */
 var admPane='pics';
-function openAdmin(){$('#drawer').hidden=false;document.documentElement.classList.add('lock');renderAdmin();$('#admClose').focus();}
-function closeAdmin(){$('#drawer').hidden=true;document.documentElement.classList.remove('lock');$('#fab').focus();}
+function openAdmin(){$('#drawer').hidden=false;document.documentElement.classList.add('scroll-hold');renderAdmin();$('#admClose').focus();}
+function closeAdmin(){$('#drawer').hidden=true;document.documentElement.classList.remove('scroll-hold');$('#fab').focus();}
 function renderAdmin(){
   if($('#drawer').hidden)return;
   $$('.atabs button').forEach(function(b){b.setAttribute('aria-selected',String(b.dataset.pane===admPane));});
