@@ -27,7 +27,7 @@
   --hero-a:#9CCFFF; --hero-b:#D9ECFF; --cloud:#FFFFFF; --orb:#FF8A5C;
   --night:#14294B; --night-2:#1D3863; --night-ink:#F2F6FF; --night-muted:#AFC1DC;
   --water:#D3E8FB; --land:#F4F1E8; --land-line:#DDD6C3; --river:#A9D1F5; --road:#2F3E58;
-  --c1:#2468CC; --c2:#E5532F; --c3:#11957A; --c4:#7D5BE0;
+  --c1:#2468CC; --c2:#E5532F; --c3:#11957A; --c4:#7D5BE0; --c5:#D23A7E; --c6:#B7791F;
   --scrim:rgba(8,16,30,.46); --shadow:rgba(14,30,60,.16);
   --f-display:"Jua","IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
   --f-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,-apple-system,sans-serif;
@@ -43,7 +43,7 @@
   --hero-a:#081426; --hero-b:#122744; --cloud:#24395B; --orb:#F2E6C2;
   --night:#08111F; --night-2:#132643; --night-ink:#F2F6FF; --night-muted:#9DB0CE;
   --water:#0F2440; --land:#18283C; --land-line:#2A3D57; --river:#1E4675; --road:#7F93B3;
-  --c1:#62A6FF; --c2:#FF8B6B; --c3:#3FD0AE; --c4:#A78BFA;
+  --c1:#62A6FF; --c2:#FF8B6B; --c3:#3FD0AE; --c4:#A78BFA; --c5:#FF7EB6; --c6:#F2B84B;
   --scrim:rgba(0,0,0,.6); --shadow:rgba(0,0,0,.45);
   color-scheme:dark;
 }}
@@ -56,7 +56,7 @@
   --hero-a:#081426; --hero-b:#122744; --cloud:#24395B; --orb:#F2E6C2;
   --night:#08111F; --night-2:#132643; --night-ink:#F2F6FF; --night-muted:#9DB0CE;
   --water:#0F2440; --land:#18283C; --land-line:#2A3D57; --river:#1E4675; --road:#7F93B3;
-  --c1:#62A6FF; --c2:#FF8B6B; --c3:#3FD0AE; --c4:#A78BFA;
+  --c1:#62A6FF; --c2:#FF8B6B; --c3:#3FD0AE; --c4:#A78BFA; --c5:#FF7EB6; --c6:#F2B84B;
   --scrim:rgba(0,0,0,.6); --shadow:rgba(0,0,0,.45);
   color-scheme:dark;
 }
@@ -670,6 +670,18 @@ details.menu-fold{background:var(--surface)}
 @keyframes winner{0%{transform:scale(.82) rotate(-4deg)}40%{transform:scale(1.12) rotate(3deg)}70%{transform:scale(.97)}100%{transform:scale(1.03)}}
 .dr-res{display:grid;gap:4px}
 .dr-banner{font-family:var(--f-display);font-size:1.6rem;line-height:1.25;color:var(--sunset-ink);animation:bubble .5s var(--bounce)}
+.crew-mem{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,200px),1fr));gap:8px}
+.cm{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:14px;background:var(--surface);border:1.5px solid var(--line);animation:pop .45s cubic-bezier(.2,1.7,.4,1) both}
+.cm.me{border-color:var(--sunset)}
+.cm-av{flex:none;display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--sunset-soft);color:var(--sunset-ink);font-weight:700;font-size:.82rem}
+.cm-t{min-width:0;flex:1}
+.cm-t b{display:block;font-size:.9rem;line-height:1.25}
+.cm-t small{display:block;font-size:.74rem;color:var(--muted)}
+.cm-x{flex:none;width:30px;height:30px;border-radius:50%;color:var(--muted);font-size:.85rem}
+.cm-x:hover{background:var(--surface-2);color:var(--ink)}
+.crew-pick{width:auto;min-width:0;flex:1 1 200px;max-width:320px}
+.crew-draw{display:grid;gap:10px;padding-top:12px;border-top:1px dashed var(--line)}
+.more-empty{grid-column:1/-1;font-size:.88rem;text-align:center;padding:4px}
 .dr-wait{font-family:var(--f-hand);font-size:1.3rem;color:var(--sunset-ink);animation:wiggle 2.4s ease-in-out infinite}
 
 /* ---------- night part 2 ---------- */
@@ -771,7 +783,7 @@ button.n2t:active{transform:scale(.94)}
 </header>
 
 <nav class="chips" aria-label="바로가기"><div class="wrap chips-in">
-  <a href="#me">탑승권</a><a href="#trip">여정</a><a href="#play">낮 액티비티</a><a href="#menu">맛집</a><a href="#stay">펜션</a><a href="#night">레크리에이션</a><a href="#car">카풀</a><a href="#shop">장보기 추첨</a><a href="#food">식사 체크</a><a href="#more">공지·준비물</a>
+  <a href="#me">탑승권</a><a href="#trip">여정</a><a href="#play">낮 액티비티</a><a href="#menu">맛집</a><a href="#stay">펜션</a><a href="#night">레크리에이션</a><a href="#car">카풀</a><a href="#shop">장보기조</a><a href="#food">식사 체크</a><a href="#more">공지·준비물</a>
 </div><div class="wrap"><div class="prog" aria-hidden="true"><i id="progFill"></i><span class="pcar" id="progCar">🚗</span><span class="pend">🏖️</span></div></div></nav>
 
 <main>
@@ -861,7 +873,7 @@ button.n2t:active{transform:scale(.94)}
 
   <div class="wrap">
     <section class="sec" id="car" aria-labelledby="carTitle">
-      <div class="sec-head"><div><p class="eyebrow">STEP 1 · CARPOOL</p><h2 id="carTitle">누구 차 타고 갈까? <span class="hop" aria-hidden="true">🚗</span></h2><p class="sec-sub">① 운전 가능한 분이 빈 운전석을 먼저 잡고 (3~4대) → ② 나머지는 가까운 차에 탑승 → ③ 조가 완성되면 장보기조 추첨!</p></div></div>
+      <div class="sec-head"><div><p class="eyebrow">STEP 1 · CARPOOL</p><h2 id="carTitle">누구 차 타고 갈까? <span class="hop" aria-hidden="true">🚗</span></h2><p class="sec-sub">① 운전 가능한 분이 빈 운전석을 먼저 잡고 (최대 6대) → ② 나머지는 가까운 차에 탑승 → ③ 장보기조는 자원 먼저, 없으면 추첨!</p></div></div>
       <ol class="steps" id="carSteps" aria-label="카풀 진행 단계"></ol>
       <div class="card seatbar">
         <div class="seatbar-top"><span>원정대 10명 좌석 현황</span><span class="num muted" id="seatNums"></span></div>
@@ -897,7 +909,7 @@ button.n2t:active{transform:scale(.94)}
     </section>
 
     <section class="sec" id="shop" aria-labelledby="shopTitle">
-      <div class="sec-head"><div><p class="eyebrow">STEP 2 · SHOPPING CREW</p><h2 id="shopTitle">장보기조 추첨 <span class="hop" aria-hidden="true">🛒</span></h2><p class="sec-sub">카풀 조 하나가 통째로 장보기조! 나머지 조는 체크인조로 펜션에 먼저 들어갑니다.</p></div></div>
+      <div class="sec-head"><div><p class="eyebrow">STEP 2 · SHOPPING CREW</p><h2 id="shopTitle">장보기조 모집 <span class="hop" aria-hidden="true">🛒</span></h2><p class="sec-sub">먼저 자원 받아요! 아무도 없으면 운전석 잡은 조 하나를 추첨하고, 누구든 사람을 바로 넣을 수도 있어요. 나머지는 체크인조로 펜션에 먼저 들어갑니다.</p></div></div>
       <div class="card draw" id="draw"></div>
       <div class="shop-grid">
         <div class="card qa"><span class="q">언제?</span><b>첫날 15:00 – 16:00</b><p>낮 액티비티 끝나고 바로 출동. 체크인조가 펜션(입실 15:00)에서 짐 풀고 바비큐 세팅하는 동안 장 봐서 16시 전후 합류해요.</p></div>
@@ -1002,7 +1014,7 @@ function full(k){var p=PK[k];if(!p)return '누군가';return p.t?p.n+' '+p.t:p.n
 function shortName(k){var p=PK[k];return p?p.n:'?';}
 function nick(k){var p=PK[k];return p?p.n.slice(1):'?';}
 
-var NOTICE_DEF='11/17(화) 11:50 영종쌈밥 집결! 카풀 조가 완성되면 장보기조를 랜덤 추첨합니다. 식사 체크도 한 번만 눌러 주세요.';
+var NOTICE_DEF='11/17(화) 11:50 영종쌈밥 집결! 장보기조는 자원 먼저 받고, 없으면 운전자 조 중 하나를 추첨합니다. 식사 체크도 한 번만 눌러 주세요.';
 var DEADLINE_DEF='11월 13일(금)';
 
 /* scenes: illustrated stand-ins until a real photo is uploaded */
@@ -1071,7 +1083,7 @@ var STOPS={
   {k:'depart',t:'10:30',title:'각자 동네에서 출발',scene:'road',tease:'운전자 동네에 3~4명씩 모여서 출발',facts:['출발 시간은 차량별로 조정 (10:00 – 11:00)','11:50 영종쌈밥 앞 전원 집결','서울에서 영종도까지 차로 약 1시간'],go:'car',goLabel:'카풀 정하러 가기'},
   {k:'ssam',t:'12:00',title:'오션뷰 쌈밥 한 상',scene:'ssam',photos:['ssam'],place:'ssam',tease:'쌈채소 무한리필… 저녁 바비큐는 잠시 잊으세요'},
   {k:'act',t:'13:00',te:'15:00'},
-  {k:'split',t:'15:00',te:'16:00',title:'장보기조 · 체크인조',scene:'cart',photos:['mart'],place:'mart',tease:'카풀 한 조는 마트로, 나머지는 펜션으로',facts:['장보기조: 카풀 조 하나를 랜덤 추첨','체크인조: 펜션 입실(15:00) 후 짐 풀고 바비큐 세팅'],go:'shop',goLabel:'장보기조 추첨 보기'},
+  {k:'split',t:'15:00',te:'16:00',title:'장보기조 · 체크인조',scene:'cart',photos:['mart'],place:'mart',tease:'장보기조는 마트로, 나머지는 펜션으로',facts:['장보기조: 먼저 자원 → 없으면 운전자 조 하나 추첨 → 필요하면 사람 추가','체크인조: 펜션 입실(15:00) 후 짐 풀고 바비큐 세팅'],go:'shop',goLabel:'장보기조 보러 가기'},
   {k:'rest',t:'16:00',te:'17:00',title:'휴식 · 자유시간',scene:'jokgu',photos:['jokgu','pension'],tease:'족구장은 하고 싶은 분만! 낮잠도 대환영',chips:['펜션 족구장 자유 이용','해변 5분 산책','방 정리 · 짐 풀기']},
   {k:'bbq',t:'17:00',title:'노을 아래 바비큐',scene:'bbq',photos:['bbq'],tease:'지글지글 + 첫 잔 = 원정대 결성식',chips:['펜션 바비큐장','해 지는 시간 약 17:20'],facts:['고기는 바비큐장에서만 (객실 안 굽기 금지)','외부 숯 반입 금지, 펜션 숯 사용']},
   {k:'rec',t:'19:00',te:'20:00',title:'??? 레크리에이션 타임',scene:'mystery',mc:true,tease:'무엇이 기다리는지는 아직 비밀',go:'night',goLabel:'공개된 게임 하나 보기'},
@@ -1142,7 +1154,7 @@ var DEC_DEF=[
   {k:'fuel',label:'운전자 유류비 · 톨비',note:'탑승자끼리 나누는 방식'},
   {k:'meet',label:'차량별 출발 시간 · 만날 곳',note:'운전자가 카풀 칸에 적어 주시면 끝'},
   {k:'act',label:'낮 액티비티',note:'투표 1위로 확정'},
-  {k:'crew',label:'장보기조',note:'카풀 조 확정 후 랜덤 추첨'},
+  {k:'crew',label:'장보기조',note:'자원 먼저 · 없으면 운전자 조 추첨 · 사람 추가 가능'},
   {k:'room',label:'방 배정',note:'여자방 · 남자방, 침구 수 확인'},
   {k:'fw',label:'불꽃놀이',note:'해변 폭죽은 금지 구역 · 펜션 마당 가능한지 확인'},
   {k:'planb',label:'비 · 강풍 오면 플랜 B',note:'레일바이크·배 대신 실내 카페 등'}
@@ -1164,12 +1176,12 @@ var FIXED=[['⚽','족구장 자유','16:00 휴식 때','stay'],['🍖','노을 
 
 /* ================= state ================= */
 var S={me:LS.get('me',null),uid:null,db:null,user:null,dl:null,assets:null,canWrite:null,owner:false,live:false,loaded:false,
-  cars:{},riders:{},homes:{},photoStatus:{},foodStatus:{},votes:{},draw:null,shop:{},bstate:{},bconfig:{},bphotos:{},myPhoto:null,myPrefs:null,
+  cars:{},riders:{},homes:{},photoStatus:{},foodStatus:{},votes:{},crew:{},shop:{},bstate:{},bconfig:{},bphotos:{},myPhoto:null,myPrefs:null,
   adm:{photos:[],prefs:[],notes:{ai:{}}},day:LS.get('day',1),zoom:true,focusCar:null,pending:null,
   pack:LS.get('pack',{}),flip:{},cloche:LS.get('cloche',{}),fac:null,celebrated:LS.get('cele',false)};
 if(S.me&&!PK[S.me])S.me=null;
-var SLOTS=['s1','s2','s3','s4'];
-var CARC=['var(--c1)','var(--c2)','var(--c3)','var(--c4)'];
+var SLOTS=['s1','s2','s3','s4','s5','s6'];
+var CARC=['var(--c1)','var(--c2)','var(--c3)','var(--c4)','var(--c5)','var(--c6)'];
 
 /* ================= helpers ================= */
 var toastT;
@@ -1263,11 +1275,11 @@ function distKm(a,b){var A=GU[a],B=GU[b];if(!A||!B)return null;var dx=A.x-B.x,dy
 function photoDone(k){return !!(S.photoStatus[k]&&S.photoStatus[k].done);}
 function foodDone(k){return !!(S.foodStatus[k]&&S.foodStatus[k].done)||(k===S.me&&!!S.myPrefs);}
 /* shopping draw */
-function drawCar(){var d=S.draw;if(!d||!d.car)return null;var c=S.cars[d.car];return (c&&c.driver&&PK[c.driver])?d.car:null;}
-function drawSeen(){return RM||(S.draw&&LS.get('drawSeen',0)===S.draw.at);}
-function revealedCar(){var sid=drawCar();return sid&&drawSeen()?sid:null;}
 function crewOf(sid){var c=S.cars[sid];if(!c||!c.driver)return [];return [c.driver].concat(ridersOf(sid));}
-function teamOf(k){if(!drawCar())return null;if(!drawSeen())return 'wait';var c=carOf(k);if(!c)return 'none';return c.sid===drawCar()?'shop':'check';}
+function crewList(){return PEOPLE.filter(function(p){return !!S.crew[p.k]}).map(function(p){return p.k});}
+function drawInfo(){var d=S.crew&&S.crew._draw;return d&&d.car?d:null;}
+function drawSeen(){var d=drawInfo();return RM||!d||LS.get('drawSeen',0)===d.at;}
+function teamOf(k){var n=crewList().length;if(!n)return null;if(!drawSeen()&&S.crew[k]&&S.crew[k].how==='draw')return 'wait';return S.crew[k]?'shop':'check';}
 
 /* ================= hero ================= */
 function renderHeroTitle(){
@@ -1308,7 +1320,7 @@ function renderTicket(){
     m.append(h('div',{class:'tk-grid'},
       h('div',{},h('small',{},'DEPART'),h('b',{},'11.17 '+((c&&S.cars[c.sid]&&S.cars[c.sid].dep)||'10:30'))),
       h('div',{},h('small',{},'CAR'),h('b',{},c?(c.role==='driver'?slotNo(c.sid)+'호차 운전':slotNo(c.sid)+'호차'):'미정')),
-      h('div',{},h('small',{},'TEAM'),h('b',{},{shop:'🛒 장보기',check:'🏡 체크인',wait:'🎰 공개 대기',none:'차 미정'}[teamOf(S.me)]||'추첨 전'))));
+      h('div',{},h('small',{},'TEAM'),h('b',{},{shop:'🛒 장보기',check:'🏡 체크인',wait:'🎰 공개 대기'}[teamOf(S.me)]||'모집 중'))));
     m.append(h('button',{class:'linkish',type:'button',style:'justify-self:start',onclick:function(){S.me=null;LS.set('me',null);renderLive();}},'제가 아니에요'));
   }
   var stamps=[{label:'어릴 적 사진',done:!!(S.me&&photoDone(S.me)),go:'night'},{label:'카풀',done:!!c,go:'car'},{label:'식사 체크',done:!!(S.me&&foodDone(S.me)),go:'food'}];
@@ -1330,10 +1342,10 @@ function actStop(){var L=leader();var v=(L.k&&!L.tie)?voteBy(L.k):null;
 function renderRail(keep){
   $$('.daytabs button').forEach(function(b){b.setAttribute('aria-selected',String(+b.dataset.day===S.day));});
   var r=$('#rail');var sl=keep?r.scrollLeft:0;r.textContent='';r.classList.toggle('still',!!keep);
-  var rc=revealedCar();
+  var crewN=crewList().length;
   STOPS[S.day].forEach(function(s0,i){var s=stopView(s0);
     var vis=coverFor(s.photos||[],s.scene);
-    var badge=s.vote?h('span',{class:'badge vote'},'투표 중'):(s.k==='split'?h('span',{class:'badge vote'},rc?'🛒 '+slotNo(rc)+'호차 당첨':'🎰 랜덤 추첨'):((s.k==='ssam'||s.k==='kal')?h('span',{class:'badge'},'예약 맛집'):null));
+    var badge=s.vote?h('span',{class:'badge vote'},'투표 중'):(s.k==='split'?h('span',{class:'badge vote'},crewN?'🛒 장보기조 '+crewN+'명':'🙋 자원 받는 중'):((s.k==='ssam'||s.k==='kal')?h('span',{class:'badge'},'예약 맛집'):null));
     r.append(h('button',{class:'stop'+(s.mc?' mc':''),type:'button',style:'--k:'+i,onclick:function(){openSheet(stopView(s0))},'aria-label':s.t+' '+s.title+' 자세히'},h('div',{style:'position:relative'},vis,badge),h('div',{class:'meta'},h('time',{},s.t+(s.te?' – '+s.te:'')),h('h3',{},s.title),h('p',{},s.tease))));
   });
   r.scrollLeft=sl;
@@ -1523,55 +1535,73 @@ function initFireworks(){
   setInterval(function(){if(!FW.vis||document.hidden||Math.random()<.45)return;var r=night.getBoundingClientRect();var top=Math.max(0,-r.top);launch(cv.width*(.1+Math.random()*.8),top+60+Math.random()*Math.min(220,innerHeight*.3));},4200);
 }
 
-/* ================= shopping draw (roulette) ================= */
+/* ================= shopping crew: volunteer → draw → add ================= */
 var DRAW={anim:false,wait:false};
+var HOW={vol:'🙋 자원',draw:'🎰 추첨',add:'➕ 추가'};
 function renderDraw(){
   var box=$('#draw');if(!box||DRAW.anim)return;box.textContent='';
-  var cars=activeCars().filter(function(c){return c.d}),sid=drawCar(),seen=drawSeen(),rc=revealedCar();
-  var unassigned=PEOPLE.filter(function(p){return !carOf(p.k)}).length;
-  box.append(h('div',{class:'dr-top'},h('b',{class:'dr-title'},'🎰 장보기조 룰렛'),h('span',{class:'muted num',style:'font-size:.86rem'},cars.length+'개 조 · 차 미정 '+unassigned+'명')));
-  var wheel=h('div',{class:'dr-cars',id:'drCars'});
-  if(!cars.length)wheel.append(h('p',{class:'muted'},'아직 카풀 조가 없어요. 위에서 운전석부터 잡아 주세요 🚗'));
-  cars.forEach(function(c){var crew=crewOf(c.sid);
-    wheel.append(h('div',{class:'dr-car'+(rc===c.sid?' win':'')+(rc&&rc!==c.sid?' lose':''),'data-sid':c.sid,style:'--carc:'+CARC[c.i]},
-      h('span',{class:'carbadge'},String(c.i+1)),h('div',{class:'t'},h('b',{},(c.i+1)+'호차 · '+crew.length+'명'),h('small',{},crew.map(nick).join(' · '))),
-      h('span',{class:'dr-tag'},rc?(rc===c.sid?'🛒 장보기':'🏡 체크인'):'?')));});
-  box.append(wheel);
-  var res=h('div',{class:'dr-res','aria-live':'polite'});
-  if(rc){var crew=crewOf(rc);res.append(h('p',{class:'dr-banner'},'🛒 장보기조 당첨: '+slotNo(rc)+'호차!'),h('p',{},crew.map(full).join(', ')+' — 원정대의 식량을 부탁드립니다 🙏'),h('p',{class:'muted',style:'font-size:.88rem'},'나머지 조는 🏡 체크인조: 펜션 먼저 들어가서 짐 풀고 바비큐 세팅!'));
-    if(S.me&&teamOf(S.me)==='shop')res.append(h('p',{class:'hand',style:'color:var(--sunset-ink);font-size:1.3rem'},'바로 당신 조예요! 장바구니는 아래에 다 있어요 👇'));}
-  else if(sid&&!seen)res.append(h('p',{class:'dr-wait'},'결과가 나왔어요! 이 칸이 화면에 보이면 룰렛이 돌아갑니다 🎰'));
-  else if(S.draw&&S.draw.car)res.append(h('p',{class:'seat-warn'},'추첨됐던 차가 없어졌어요. 다시 추첨이 필요해요.'));
-  else res.append(h('p',{class:'hand',style:'font-size:1.25rem'},cars.length>=2?'카풀 조가 완성되면 총괄이 공식 추첨! 모두의 화면에서 룰렛이 같이 돌아가요 🎲':'조가 2개 이상 생기면 추첨할 수 있어요'));
-  box.append(res);
+  var list=crewList(),cars=activeCars().filter(function(c){return c.d}),di=drawInfo(),seen=drawSeen();
+  box.append(h('div',{class:'dr-top'},h('b',{class:'dr-title'},'🛒 장보기조'),h('span',{class:'muted num',style:'font-size:.86rem'},list.length?list.length+'명 · 나머지 '+(10-list.length)+'명은 체크인조':'아직 0명')));
+  /* members */
+  var mem=h('div',{class:'crew-mem'});
+  var hidden=0;
+  list.forEach(function(k){var c=S.crew[k];if(c.how==='draw'&&!seen){hidden++;return;}
+    var tag=HOW[c.how]||'';if(c.how==='add'&&c.by&&PK[c.by]&&c.by!==k)tag='➕ '+shortName(c.by)+' 님이 추가';
+    mem.append(h('div',{class:'cm'+(k===S.me?' me':'')},h('span',{class:'cm-av'},nick(k)),h('div',{class:'cm-t'},h('b',{},full(k)),h('small',{},tag)),
+      h('button',{class:'cm-x',type:'button','aria-label':shortName(k)+' 빼기',onclick:function(e){armed(e.currentTarget,'뺄까요?',function(){crewRemove(k)})}},'✕')));});
+  if(hidden)mem.append(h('p',{class:'dr-wait'},'🎰 추첨 결과가 나왔어요! 이 칸이 보이면 룰렛이 돌아가요'));
+  if(!list.length)mem.append(h('p',{class:'hand',style:'font-size:1.25rem;color:var(--sunset-ink)'},'장보기 같이 갈 용사를 찾습니다 🙋 먼저 손 들어 주세요!'));
+  box.append(mem);
+  /* actions */
   var act=h('div',{class:'row'});
-  if(S.owner){act.append(h('button',{class:'btn warm',type:'button',disabled:cars.length<2?true:null,onclick:function(e){if(sid)armed(e.currentTarget,'정말 다시 뽑을까요?',officialDraw);else officialDraw();}},sid?'🔁 다시 추첨':'🎰 공식 추첨 시작'));
-    if(S.draw&&S.draw.car)act.append(h('button',{class:'btn ghost small',type:'button',onclick:function(e){armed(e.currentTarget,'결과 지울까요?',function(){write(function(){return S.db.doc('board/draw').delete()},'추첨 결과를 지웠어요')})}},'결과 지우기'));
-    if(unassigned&&cars.length>=2&&!sid)act.append(h('span',{class:'muted',style:'font-size:.85rem'},'아직 차 미정 '+unassigned+'명 — 그래도 추첨은 돼요'));}
-  if(cars.length>=2&&!rc)act.append(h('button',{class:'btn ghost small',type:'button',onclick:practiceSpin},'🎲 재미로 돌려 보기'));
-  if(act.childNodes.length)box.append(act);
+  if(S.me&&!S.crew[S.me])act.append(h('button',{class:'btn warm',type:'button',onclick:crewVolunteer},'🙋 내가 장보기 갈게요'));
+  var pick=h('select',{class:'input crew-pick','aria-label':'장보기조에 넣을 사람'});pick.append(h('option',{value:''},'＋ 사람 바로 넣기'));
+  PEOPLE.forEach(function(p){if(!S.crew[p.k])pick.append(h('option',{value:p.k},full(p.k)+(carOf(p.k)?' · '+slotNo(carOf(p.k).sid)+'호차':'')));});
+  pick.addEventListener('change',function(){var k=pick.value;if(k)crewAdd(k);});
+  if(pick.options.length>1)act.append(pick);
+  box.append(act);
+  /* draw */
+  var dr=h('div',{class:'crew-draw'});
+  if(!list.length){
+    dr.append(h('p',{class:'muted',style:'font-size:.88rem'},cars.length?'자원자가 없으면 아래 버튼으로 운전석 잡은 조 하나를 추첨해요. 그 차에 탄 사람 전원이 장보기조가 돼요.':'운전석이 잡히면 운전자 조 추첨도 할 수 있어요.'));
+    if(cars.length){var wheel=h('div',{class:'dr-cars',id:'drCars'});
+      cars.forEach(function(c){var crew=crewOf(c.sid);wheel.append(h('div',{class:'dr-car','data-sid':c.sid,style:'--carc:'+CARC[c.i]},h('span',{class:'carbadge'},String(c.i+1)),h('div',{class:'t'},h('b',{},(c.i+1)+'호차 · '+crew.length+'명'),h('small',{},crew.map(nick).join(' · '))),h('span',{class:'dr-tag'},'?')));});
+      dr.append(wheel,h('div',{class:'row'},h('button',{class:'btn',type:'button',onclick:crewDraw},'🎰 추첨하기 — 운전자 조 중 하나')));}
+  }else if(di&&seen&&list.some(function(k){return S.crew[k].how==='draw'})){
+    dr.append(h('p',{class:'dr-banner'},'🎰 추첨 결과: '+slotNo(di.car)+'호차 조가 장보기조!'));
+  }
+  if(S.owner&&(list.length||di))dr.append(h('div',{class:'row'},h('button',{class:'btn ghost small',type:'button',onclick:function(e){armed(e.currentTarget,'장보기조 전부 비울까요?',crewReset)}},'관리: 장보기조 비우기')));
+  if(dr.childNodes.length)box.append(dr);
+  if(S.me&&S.crew[S.me]&&(seen||S.crew[S.me].how!=='draw'))box.append(h('p',{class:'hand',style:'color:var(--sunset-ink);font-size:1.25rem'},'당신은 장보기조! 장바구니는 아래에 다 있어요 👇'));
 }
-function officialDraw(){if(!S.owner||!S.db)return;var cars=activeCars().filter(function(c){return c.d});if(cars.length<2){toast('조가 2개 이상이어야 추첨할 수 있어요');return;}
-  var pick=cars[Math.floor(Math.random()*cars.length)].sid;
-  write(function(){return S.db.doc('board/draw').set({car:pick,at:Date.now(),n:cars.length})});}
-function practiceSpin(){var cars=activeCars().filter(function(c){return c.d});if(cars.length<2||DRAW.anim)return;spinTo(cars[Math.floor(Math.random()*cars.length)].sid,true);}
-function maybeSpin(){var x=S.draw;if(!x||!x.car||!drawCar()||drawSeen()||DRAW.anim)return;
+function crewVolunteer(e){if(!guard(false))return;var btn=e&&e.currentTarget;
+  write(function(){return S.db.doc('crew/'+S.me).set({how:'vol',by:S.me,at:Date.now()})},'장보기조 자원 완료! 고마워요 🛒').then(function(ok){if(ok&&btn){var r=btn.getBoundingClientRect();popAt(r.left+r.width/2,r.top,['🛒','🙋','✨','🥩']);}});}
+function crewAdd(k){if(!guard(false))return;if(!PK[k]||S.crew[k])return;
+  write(function(){return S.db.doc('crew/'+k).set({how:k===S.me?'vol':'add',by:S.me,at:Date.now()})},shortName(k)+' 님을 장보기조에 넣었어요');}
+function crewRemove(k){if(!guard(false))return;write(function(){return S.db.doc('crew/'+k).delete()},shortName(k)+' 님을 장보기조에서 뺐어요');}
+function crewDraw(){if(!guard(false))return;if(crewList().length){toast('이미 장보기조가 있어요');return;}
+  var cars=activeCars().filter(function(c){return c.d});if(!cars.length){toast('운전석이 먼저 잡혀야 추첨할 수 있어요');return;}
+  var pick=cars[Math.floor(Math.random()*cars.length)].sid,members=crewOf(pick),at=Date.now();
+  write(function(){return S.db.doc('crew/_draw').set({car:pick,at:at,by:S.me}).then(function(){return Promise.all(members.map(function(k){return S.db.doc('crew/'+k).set({how:'draw',car:pick,by:S.me,at:at})}));});});}
+function crewReset(){if(!S.owner)return;var ids=Object.keys(S.crew);
+  write(function(){return Promise.all(ids.map(function(id){return S.db.doc('crew/'+id).delete()}));},'장보기조를 비웠어요');}
+function maybeSpin(){var d=drawInfo();if(!d||drawSeen()||DRAW.anim)return;if(!S.cars[d.car]){LS.set('drawSeen',d.at);renderDraw();return;}
   var box=$('#draw');if(!box)return;var r=box.getBoundingClientRect();
-  if(r.top<innerHeight*.8&&r.bottom>innerHeight*.2){spinTo(x.car,false);return;}
+  if(r.top<innerHeight*.8&&r.bottom>innerHeight*.2){spinTo(d.car);return;}
   if(!DRAW.wait&&'IntersectionObserver' in window){DRAW.wait=true;var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){io.disconnect();DRAW.wait=false;setTimeout(maybeSpin,250);}},{threshold:.4});io.observe(box);}}
-function spinTo(sid,practice){
-  var box=$('#drCars');var els=box?$$('.dr-car',box):[];var idx=els.findIndex(function(e){return e.dataset.sid===sid});
-  var done=function(){DRAW.anim=false;if(!practice&&S.draw)LS.set('drawSeen',S.draw.at);renderDraw();renderTicket();renderRail(true);renderSteps();
-    if(!practice){var w=$('.dr-car.win');if(w){var r2=w.getBoundingClientRect();burst((r2.left+r2.width/2)/innerWidth,(r2.top+r2.height/2)/innerHeight,130);}toast('🛒 장보기조는 '+slotNo(sid)+'호차! 🎉');}};
+function spinTo(sid){
+  var d=drawInfo();
+  /* show the candidate cars as a wheel even if the crew list is already filled */
+  var box=$('#draw');var cars=activeCars().filter(function(c){return c.d});
+  var wheel=h('div',{class:'dr-cars',id:'drCars'});cars.forEach(function(c){wheel.append(h('div',{class:'dr-car','data-sid':c.sid,style:'--carc:'+CARC[c.i]},h('span',{class:'carbadge'},String(c.i+1)),h('div',{class:'t'},h('b',{},(c.i+1)+'호차'),h('small',{},crewOf(c.sid).map(nick).join(' · '))),h('span',{class:'dr-tag'},'?')));});
+  var els=$$('.dr-car',wheel),idx=els.findIndex(function(e){return e.dataset.sid===sid});
+  var done=function(){DRAW.anim=false;if(d)LS.set('drawSeen',d.at);renderDraw();renderTicket();renderRail(true);renderSteps();
+    var r2=box.getBoundingClientRect();burst(.5,Math.max(.1,Math.min(.9,(r2.top+80)/innerHeight)),130);toast('🛒 장보기조는 '+slotNo(sid)+'호차 조! 🎉');};
   if(RM||idx<0){done();return;}
-  DRAW.anim=true;els.forEach(function(e){e.classList.remove('win','lose','hot')});
-  $$('.dr-tag',box).forEach(function(t){t.textContent='?'});
+  DRAW.anim=true;box.textContent='';box.append(h('div',{class:'dr-top'},h('b',{class:'dr-title'},'🎰 장보기조 추첨 중…')),wheel);
   var total=els.length*4+idx,step=0;
   var tickF=function(){els.forEach(function(e){e.classList.remove('hot')});var cur=els[step%els.length];cur.classList.add('hot');
-    if(step>=total){
-      if(practice){DRAW.anim=false;cur.classList.add('win');var r=cur.getBoundingClientRect();popAt(r.left+r.width/2,r.top+r.height/2,['🎲','✨','🛒']);toast('연습 결과: '+slotNo(sid)+'호차! 공식 추첨은 총괄이 해요');setTimeout(function(){if(!DRAW.anim)renderDraw();},2400);}
-      else setTimeout(done,350);
-      return;}
+    if(step>=total){cur.classList.add('win');setTimeout(done,900);return;}
     step++;setTimeout(tickF,55+Math.pow(step/total,3)*460);};
   tickF();
 }
@@ -1597,8 +1627,8 @@ function toggleShop(key,val,cb){
 }
 
 /* ================= carpool ================= */
-function renderSteps(){var el=$('#carSteps');if(!el)return;var n=activeCars().filter(function(c){return c.d}).length,un=PEOPLE.filter(function(p){return !carOf(p.k)}).length,rc=revealedCar(),dc=drawCar();
-  var st=[{t:'운전석 잡기',d:n+' / 4대 (3~4대면 OK)',done:n>=3},{t:'나머지 탑승',d:n?(un?'차 미정 '+un+'명':'전원 탑승 완료!'):'운전석이 먼저예요',done:n>0&&!un},{t:'장보기조 추첨',d:rc?slotNo(rc)+'호차 당첨 🛒':(dc?'결과 공개 대기 🎰':'조 완성 후 추첨'),done:!!dc}];
+function renderSteps(){var el=$('#carSteps');if(!el)return;var n=activeCars().filter(function(c){return c.d}).length,un=PEOPLE.filter(function(p){return !carOf(p.k)}).length,cn=crewList().length;
+  var st=[{t:'운전석 잡기',d:n+' / '+SLOTS.length+'대',done:n>=3},{t:'나머지 탑승',d:n?(un?'차 미정 '+un+'명':'전원 탑승 완료!'):'운전석이 먼저예요',done:n>0&&!un},{t:'장보기조',d:cn?cn+'명 확정 🛒':'자원 받는 중 🙋',done:cn>0}];
   var cur=-1;st.forEach(function(s,i){if(cur<0&&!s.done)cur=i;});el.textContent='';
   st.forEach(function(s,i){el.append(h('li',{class:(s.done?'done':'')+(i===cur?' cur':'')},h('span',{class:'sn','aria-hidden':'true'},s.done?'✓':String(i+1)),h('div',{},h('b',{},s.t),h('small',{},s.d))));});}
 function renderCar(){
@@ -1606,7 +1636,7 @@ function renderCar(){
   var cars=activeCars(),ds=driverSet(),nDrivers=0,seats=0,assigned=0;
   cars.forEach(function(c){if(c.d){nDrivers++;seats+=c.d.seats||0;assigned+=ridersOf(c.sid).length;}});
   var need=10-nDrivers;
-  $('#seatNums').textContent='운전석 '+nDrivers+'/4 · 남은 좌석 '+Math.max(0,seats-assigned);
+  $('#seatNums').textContent='운전석 '+nDrivers+'/'+SLOTS.length+' · 남은 좌석 '+Math.max(0,seats-assigned);
   var dots=$('#peopleDots');dots.textContent='';
   PEOPLE.forEach(function(p){var c=carOf(p.k);var cls='pd',st='';
     if(c){cls+=c.role==='driver'?' drv':' rid';st='background:'+CARC[slotNo(c.sid)-1];}
@@ -1619,10 +1649,10 @@ function renderCar(){
   var avail=cars.filter(function(c){return c.d&&ridersOf(c.sid).length<(c.d.seats||0)&&c.d.driver!==S.me;});
   var nearest=null,best=1e9;
   if(myA&&!ds[S.me])avail.forEach(function(c){var d=distKm(myA,c.d.area);if(d!=null&&d<best){best=d;nearest=c.sid;}});
-  var box=$('#slots');box.textContent='';var firstEmpty=false;
+  var box=$('#slots');box.textContent='';var firstEmpty=false;S._moreEmpty=0;
   cars.forEach(function(c){
     var color=CARC[c.i];
-    if(!c.d){var isNext=!firstEmpty;firstEmpty=true;
+    if(!c.d){var isNext=!firstEmpty;firstEmpty=true;if(!isNext){S._moreEmpty=(S._moreEmpty||0)+1;return;}
       box.append(h('button',{class:'slot empty',type:'button',style:'--carc:'+color,onclick:openDriverForm},h('span',{class:'ic','aria-hidden':'true'},'🚙'),h('span',{class:'slot-no'},(c.i+1)+'호차'+(isNext?' · 다음 순서':'')),h('b',{},'빈 운전석'),h('span',{class:'hand muted'},'운전대 잡아 주실 분, 여기요!')));return;}
     var d=c.d,rs=ridersOf(c.sid),mine=S.me===d.driver,iRide=S.me&&rs.indexOf(S.me)>=0,isFull=rs.length>=(d.seats||0);
     var seatsEl=h('div',{class:'seats'});for(var i=0;i<(d.seats||0);i++){var rk=rs[i];seatsEl.append(h('span',{class:'seat'+(rk?' taken':''),title:rk?full(rk):'빈자리'},rk?nick(rk):''));}
@@ -1637,6 +1667,7 @@ function renderCar(){
       h('div',{class:'slot-meta'},h('span',{class:'chip'},d.area||'지역 미정'),h('span',{class:'chip'},'🕘 '+(d.dep||'10:30')+' 출발'),h('span',{class:'chip'},'📍 '+(d.meet||'만날 곳 정하는 중')),d.car?h('span',{class:'chip'},d.car):null,nearest===c.sid?h('span',{class:'near'},'내 동네에서 가장 가까워요'):null,dist!=null&&nearest!==c.sid?h('span',{class:'chip num'},'약 '+Math.round(dist)+'km'):null),
       seatsEl,h('p',{class:'riders'},rs.length?'탑승: '+rs.map(full).join(', '):'아직 탑승자가 없어요'),actions));
   });
+  if(S._moreEmpty)box.append(h('p',{class:'muted more-empty'},'🚙 빈 운전석이 '+S._moreEmpty+'자리 더 있어요 (최대 '+SLOTS.length+'대)'));
   var none=PEOPLE.filter(function(p){return !carOf(p.k);});
   $('#noCar').textContent=none.length?('아직 차 미정: '+none.map(function(p){return p.n}).join(', ')):'원정대 10명 모두 차가 정해졌어요! 🎉';
   var sel=$('#myArea');if(document.activeElement!==sel)sel.value=myA||'';
@@ -1721,7 +1752,7 @@ function pickArea(a){
 function myDriverSlot(){var ds=driverSet();return S.me?ds[S.me]||null:null;}
 function openDriverForm(){
   if(!guard(false))return;var mine=myDriverSlot();
-  if(!mine&&activeCars().every(function(c){return c.d})){toast('운전석 4자리가 모두 찼어요. 탑승으로 함께해 주세요!');return;}
+  if(!mine&&activeCars().every(function(c){return c.d})){toast('운전석 '+SLOTS.length+'자리가 모두 찼어요. 탑승으로 함께해 주세요!');return;}
   $('#dfTitle').textContent=mine?slotNo(mine)+'호차 정보 고치기':'운전석 신청 · 선착순';$('#dfSubmit').textContent=mine?'저장하기':'운전석 찜하기';
   var d=mine?S.cars[mine]:null;$('#dfArea').value=(d&&d.area)||areaOf(S.me)||'';
   var rb=document.getElementById('dfSeats'+String((d&&d.seats)||3));if(rb)rb.checked=true;
@@ -1931,9 +1962,9 @@ function admTally(){
   rows.forEach(function(r){p.append(h('div',{class:'arow'},h('b',{},r.v.title+' · '+r.who.length+'표'),h('span',{class:'muted',style:'font-size:.9rem'},r.who.length?r.who.map(shortName).join(', '):'아직 없음')));});
   var voted=Object.keys(S.votes).filter(function(k){return PK[k]&&validPick(S.votes[k])});
   p.append(h('p',{class:'muted',style:'font-size:.9rem'},'투표한 사람 '+voted.length+'/10'+(voted.length<10?' · 아직: '+PEOPLE.filter(function(x){return voted.indexOf(x.k)<0}).map(function(x){return x.n}).join(', '):'')));
-  p.append(h('h3',{},'장보기조 추첨'));
-  var dsid=drawCar();p.append(h('div',{class:'arow'},h('b',{},dsid?'🛒 '+slotNo(dsid)+'호차 당첨 · '+crewOf(dsid).map(shortName).join(', '):'아직 추첨 전'),h('span',{class:'muted',style:'font-size:.9rem'},'추첨은 페이지의 ‘장보기조 추첨’ 칸에서 해요. 누르면 모두의 화면에서 룰렛이 같이 돌아가요.'),
-    h('div',{class:'row'},h('button',{class:'btn small',type:'button',onclick:function(){closeAdmin();setTimeout(function(){goTo('shop')},60);}},'추첨 칸으로 가기'))));
+  p.append(h('h3',{},'장보기조'));
+  var cl=crewList();p.append(h('div',{class:'arow'},h('b',{},cl.length?'🛒 '+cl.length+'명 · '+cl.map(function(k){return shortName(k)+'('+(HOW[S.crew[k].how]||'').replace(/^\S+ /,'')+')'}).join(', '):'아직 아무도 없어요'),h('span',{class:'muted',style:'font-size:.9rem'},'자원 · 추첨 · 사람 추가는 페이지의 ‘장보기조’ 칸에서 누구나 할 수 있어요. 전부 비우기는 관리자만 보여요.'),
+    h('div',{class:'row'},h('button',{class:'btn small',type:'button',onclick:function(){closeAdmin();setTimeout(function(){goTo('shop')},60);}},'장보기조 칸으로 가기'))));
   p.append(h('div',{class:'row'},h('button',{class:'btn ghost small',type:'button',onclick:function(e){armed(e.currentTarget,'체크 전부 해제?',function(){write(function(){return S.db.doc('shop/list').set({checked:{},at:Date.now()})},'장바구니 체크를 비웠어요')})}},'장바구니 체크 초기화')));
 }
 function admCars(){
@@ -1961,7 +1992,7 @@ function admFood(){
 }
 function admShare(){
   var p=$('#pane-share');p.textContent='';
-  var txt='[을왕리 원정대 🌊] 11/17–18 워크숍 페이지 오픈! (로그인 필요 없어요)\n들어가서 딱 다섯 가지만 부탁드려요 🙏\n① 탑승권에서 이름 고르기\n② 카풀: 운전 가능하신 분이 먼저 빈 운전석 잡기 (3~4대) → 나머지는 사는 동네 찍고 가까운 차에 탑승\n③ 낮 액티비티 투표 (레일바이크 / 갈매기 배 / 선녀바위)\n④ 어릴 적 사진 제출 — 전원 필수! (마감 '+deadline()+', 총괄만 봅니다)\n⑤ 식사 체크 (점심 예약 전에!)\n카풀 조가 완성되면 장보기조를 랜덤 추첨합니다 🎰\n링크: ';
+  var txt='[을왕리 원정대 🌊] 11/17–18 워크숍 페이지 오픈! (로그인 필요 없어요)\n들어가서 딱 다섯 가지만 부탁드려요 🙏\n① 탑승권에서 이름 고르기\n② 카풀: 운전 가능하신 분이 먼저 빈 운전석 잡기 (최대 6대) → 나머지는 사는 동네 찍고 가까운 차에 탑승\n③ 낮 액티비티 투표 (레일바이크 / 갈매기 배 / 선녀바위)\n④ 어릴 적 사진 제출 — 전원 필수! (마감 '+deadline()+', 총괄만 봅니다)\n⑤ 식사 체크 (점심 예약 전에!)\n장보기조는 자원 먼저! 없으면 추첨합니다 🛒\n링크: ';
   var pre=h('pre',{style:'white-space:pre-wrap;margin:0;font-family:var(--f-body)'},txt);
   p.append(h('div',{class:'arow'},h('b',{},'Teams에 붙여 넣을 안내 문구'),pre,h('button',{class:'btn small',type:'button',onclick:function(e){copy(txt,e.currentTarget)}},'문구 복사')));
   p.append(h('p',{class:'muted',style:'font-size:.9rem'},'링크는 문구 끝에 붙여 넣어 주세요. 링크만 있으면 누구나 로그인 없이 바로 참여할 수 있어요.'));
@@ -2041,7 +2072,7 @@ function subscribe(){
   db.collection('photoStatus').onSnapshot(function(s){S.photoStatus=asMap(s);firstDone('ps',s);renderStrip();renderTicket();renderReady();renderPhotoPanel();},onErr);
   db.collection('foodStatus').onSnapshot(function(s){S.foodStatus=asMap(s);renderTicket();renderReady();},onErr);
   db.collection('votes').onSnapshot(function(s){S.votes=asMap(s);renderVotes();renderRail(true);if(admPane==='tally')renderAdmin();},onErr);
-  db.doc('board/draw').onSnapshot(function(d){S.draw=d.exists?d.data():null;renderDraw();maybeSpin();renderSteps();renderTicket();renderRail(true);if(admPane==='tally')renderAdmin();},onErr);
+  db.collection('crew').onSnapshot(function(s){S.crew=asMap(s);renderDraw();maybeSpin();renderSteps();renderTicket();renderRail(true);if(admPane==='tally')renderAdmin();},onErr);
   db.doc('shop/list').onSnapshot(function(d){S.shop=d.exists?d.data():{};renderShop();},onErr);
   db.doc('board/state').onSnapshot(function(d){S.bstate=d.exists?d.data():{};firstDone('bs',d);renderRes();renderTodo();if(!S.admStatusDirty)renderAdmin();},onErr);
   db.doc('board/config').onSnapshot(function(d){S.bconfig=d.exists?d.data():{};renderNotice();renderPhotoPanel();},onErr);
