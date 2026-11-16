@@ -526,6 +526,8 @@ details.fold .fold-in{padding:0 16px 16px;animation:unfold .4s var(--bounce)}
 .seg{display:flex;gap:6px;flex-wrap:wrap}
 .seg button{min-height:40px;padding:6px 14px;border-radius:12px;background:var(--surface);border:1px solid var(--line);font-weight:700;color:var(--ink)}
 .seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:transparent}
+.splitseg button{min-height:36px;padding:4px 12px;font-size:.88rem}
+.splitseg button[aria-pressed="false"]{color:var(--muted);text-decoration:line-through}
 .mlist{list-style:none;padding:0;margin:0;display:grid;gap:8px}
 .mlist li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;align-items:center;padding:12px 14px;border-radius:14px;background:var(--bg)}
 .mlist .ml b{display:block}
@@ -2011,8 +2013,14 @@ function parseAmt(t){t=String(t||'').replace(/[,\s원]/g,'');if(!t)return NaN;va
   if(m)return Math.round(parseFloat(m[1])*10000+(m[2]?parseFloat(m[2]):0));return /^\d+$/.test(t)?parseInt(t,10):NaN;}
 function moneyRows(){var o=S.money||{};return Object.keys(o).map(function(id){var x=Object.assign({},o[id]);x.id=id;return x;})
   .filter(function(x){return x.label&&typeof x.amount==='number'&&x.amount>=0;}).sort(function(a,b){return (a.at0||a.at||0)-(b.at0||b.at||0)});}
+var SPLIT_OUT_DEF=['lyj'];
+function splitOut(){var d=S.money&&S.money._split;return d&&Array.isArray(d.out)?d.out.filter(function(k){return PK[k]}):SPLIT_OUT_DEF;}
+function inSplit(k){return splitOut().indexOf(k)<0;}
+function toggleSplit(k){if(!guard(false))return;var out=splitOut().slice(),i=out.indexOf(k);if(i>=0)out.splice(i,1);else out.push(k);
+  if(out.length>=PEOPLE.length){toast('최소 한 명은 N빵에 있어야 해요');return;}
+  write(function(){return S.db.doc('money/_split').set({out:out,by:S.me,at:Date.now()})},(i>=0?shortName(k)+' N빵에 넣었어요':shortName(k)+' N빵에서 뺐어요'));}
 function moneyStats(){var rows=moneyRows(),tot=0,paid=0,by={};rows.forEach(function(x){tot+=x.amount;if(x.st==='paid'){paid+=x.amount;if(x.payer&&PK[x.payer])by[x.payer]=(by[x.payer]||0)+x.amount;}});
-  return {rows:rows,tot:tot,paid:paid,plan:tot-paid,by:by,n:PEOPLE.length};}
+  return {rows:rows,tot:tot,paid:paid,plan:tot-paid,by:by,n:Math.max(1,PEOPLE.filter(function(p){return inSplit(p.k)}).length)};}
 function renderMoneyForm(){var sel=$('#mfPayer');if(!sel)return;sel.textContent='';sel.append(h('option',{value:''},'아직 안 냄 · 미정'));
   PEOPLE.forEach(function(p){sel.append(h('option',{value:p.k},p.host?p.n+' (총괄)':full(p.k)))});
   $$('#mfSt button').forEach(function(b){b.addEventListener('click',function(){MF.st=b.dataset.v;$$('#mfSt button').forEach(function(o){o.setAttribute('aria-pressed',String(o===b))});});});
@@ -2041,7 +2049,7 @@ function saveMoney(e){e.preventDefault();if(!guard(false))return;
 function renderMoney(){var st=moneyStats();var sum=$('#moneySum');if(!sum)return;sum.textContent='';
   var per=st.tot/st.n,pctPaid=st.tot?Math.round(st.paid/st.tot*100):0;
   sum.append(h('div',{class:'mt hi'},h('small',{},'총 지출 (예정 포함)'),h('b',{},won(st.tot)),h('small',{},st.rows.length+'건')),
-    h('div',{class:'mt'},h('small',{},'1인당 · '+st.n+'명'),h('b',{},'약 '+won(Math.round(per/100)*100)),h('small',{},'예정 금액까지 다 낸다고 치면')),
+    h('div',{class:'mt'},h('small',{},'1인당 · N빵 '+st.n+'명'),h('b',{},'약 '+won(Math.round(per/100)*100)),h('small',{},'예정 금액까지 다 낸다고 치면')),
     h('div',{class:'mt'},h('small',{},'결제 완료 / 가서 낼 돈'),h('b',{},won(st.paid)),h('small',{},'예정 '+won(st.plan)),h('div',{class:'lprog'},h('i',{style:'width:'+pctPaid+'%'}))));
   var ul=$('#moneyList');ul.textContent='';
   if(!st.rows.length)ul.append(h('li',{class:'empty'},'아직 적힌 지출이 없어요. 첫 지출을 적어 주세요.'));
@@ -2050,12 +2058,14 @@ function renderMoney(){var st=moneyStats();var sum=$('#moneySum');if(!sum)return
       h('div',{class:'mr'},h('span',{class:'amt'},won(x.amount)),h('span',{class:'pill '+(x.st==='paid'?'done':'soon')},x.st==='paid'?'결제 완료':'가서 결제')),
       h('button',{class:'linkish edit',type:'button',onclick:function(){openMoneyForm(x.id)}},'수정 · 삭제')));});
   var who=$('#moneyWho');who.textContent='';var share=st.paid/st.n;
+  var seg=h('div',{class:'seg splitseg',role:'group','aria-label':'N빵 대상'});PEOPLE.forEach(function(p){var on=inSplit(p.k);seg.append(h('button',{type:'button','aria-pressed':String(on),onclick:function(){toggleSplit(p.k)}},(on?'✓ ':'')+shortName(p.k)));});
+  who.append(h('div',{class:'list-top'},h('b',{},'N빵 대상 · '+st.n+'명'),h('span',{class:'muted',style:'font-size:.85rem'},'인턴은 빼고 나눠요 · 이름을 누르면 넣고 빼요')),seg);
   who.append(h('div',{class:'list-top'},h('b',{},'누가 얼마 냈나 · 결제 완료 기준'),h('span',{class:'muted',style:'font-size:.85rem'},'지금 1인 분담금 '+won(Math.round(share)))));
   var payers=Object.keys(st.by);var wl=h('ul',{class:'mwho'});
   if(!payers.length)wl.append(h('li',{},h('span',{class:'muted'},'아직 결제 완료된 지출이 없어요')));
-  payers.sort(function(a,b){return st.by[b]-st.by[a]}).forEach(function(k){var d=st.by[k]-share;
-    wl.append(h('li',{},h('span',{},h('b',{},full(k)),' '+won(st.by[k])+' 냄'),h('span',{class:d>=0?'get':''},d>=0?'정산 때 '+won(Math.round(d))+' 받기':'정산 때 '+won(Math.round(-d))+' 보내기')));});
-  who.append(wl,h('p',{class:'muted',style:'font-size:.85rem;margin:0'},'안 낸 분은 1인 분담금만큼 보내면 끝. 가서 결제한 뒤엔 그 줄을 눌러 ‘결제 완료’와 낸 사람으로 바꿔 주세요 → 자동 반영돼요.'));
+  payers.sort(function(a,b){return st.by[b]-st.by[a]}).forEach(function(k){var d=st.by[k]-(inSplit(k)?share:0);
+    wl.append(h('li',{},h('span',{},h('b',{},full(k)),' '+won(st.by[k])+' 냄'+(inSplit(k)?'':' · N빵 제외')),h('span',{class:d>=0?'get':''},d>=0?'정산 때 '+won(Math.round(d))+' 받기':'정산 때 '+won(Math.round(-d))+' 보내기')));});
+  who.append(wl,h('p',{class:'muted',style:'font-size:.85rem;margin:0'},'N빵 대상 중 안 낸 분은 1인 분담금만큼 보내면 끝. N빵에서 빠진 분이 낸 돈은 전액 돌려받아요. 가서 결제한 뒤엔 그 줄을 눌러 ‘결제 완료’와 낸 사람으로 바꿔 주세요 → 자동 반영돼요.'));
   var fab=$('#mfab');if(fab){fab.hidden=!st.tot;$('#mfabSum').textContent=st.tot?man(st.tot)+' · 1인 '+man(Math.round(per/100)*100):'';}
   renderTicket();
 }
