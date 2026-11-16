@@ -417,11 +417,16 @@ details.fold .fold-in{padding:0 16px 16px;animation:unfold .4s var(--bounce)}
 .lprog i{display:block;height:100%;background:var(--ok);border-radius:10px;width:0;transition:width .7s var(--bounce)}
 .cat{display:grid;gap:6px}
 .cat h4{margin:6px 0 0;font-size:.95rem;display:flex;gap:6px;align-items:center}
-.items{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:6px}
+.items{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:6px}
+.items .nm{display:grid;gap:2px;min-width:0}
+.items .nm b{font-weight:700}
+.items .nm small{font-size:.76rem;line-height:1.35;color:var(--muted);font-weight:400}
+.cat h4{flex-wrap:wrap;row-gap:0}
+.cat h4 small{flex:1 1 100%;font-size:.76rem;font-weight:400;color:var(--muted)}
 .items label{display:flex;gap:10px;align-items:center;padding:10px 12px;border-radius:12px;background:var(--bg);cursor:pointer;min-height:46px;transition:transform .15s var(--bounce)}
 .items label:active{transform:scale(.97)}
 .items input{width:20px;height:20px;accent-color:var(--ok);flex:none}
-.items .qt{margin-left:auto;font-size:.82rem;font-weight:700;color:var(--muted);white-space:nowrap}
+.items .qt{margin-left:auto;font-size:.82rem;font-weight:700;color:var(--ink,inherit);white-space:nowrap;padding-left:6px}
 .items input:checked ~ span{text-decoration:line-through;color:var(--muted)}
 
 /* ---------- carpool ---------- */
@@ -920,7 +925,7 @@ button.n2t:active{transform:scale(.94)}
       <div class="card list">
         <div class="list-top"><b>장바구니 · 10명 1박 기준</b><span class="muted num" id="listNum"></span></div>
         <div class="lprog"><i id="listBar"></i></div>
-        <p class="muted" style="font-size:.86rem">당일 마트에서 장보기조가 같이 체크하면 모두의 화면에 바로 반영돼요. 술 수량은 식사 체크 결과 보고 조정합니다.</p>
+        <p class="muted" style="font-size:.86rem">식사 체크에서 고른 주종을 반영하고, 아직 안 내신 분 몫까지 여유를 둔 수량이에요. 술은 넉넉하되 과하지 않게 — 모자라면 해변 편의점에서 바로 보충해요. 마트에서 같이 체크하면 모두의 화면에 바로 반영돼요.</p>
         <div id="shopList"></div>
       </div>
     </section>
@@ -1128,16 +1133,61 @@ var MYST=[
   {hint:'우승 팀에게 무언가 걸려 있다는 소문이…',back:'11월 17일 저녁 7시에 공개'}
 ];
 var SHOP=[
-  {cat:'고기',ic:'🥩',items:[['삼겹살','2kg'],['목살','1.5kg'],['소시지','2봉'],['새우 (선택)','1봉']]},
-  {cat:'쌈·채소',ic:'🥬',items:[['쌈채소 모둠','3팩'],['깻잎','2묶음'],['마늘 · 청양고추','1팩씩'],['양파','3개'],['새송이버섯','1봉'],['파채','2봉']]},
-  {cat:'곁들임·밥',ic:'🍚',items:[['쌈장 · 소금 · 기름장','1세트'],['김치','1kg'],['햇반','12개'],['된장찌개 재료','1세트']]},
-  {cat:'술·음료',ic:'🍻',items:[['소주','15~20병'],['맥주','캔 30개'],['논알콜 맥주','6캔'],['탄산음료','1.5L 4병'],['생수','2L 12병'],['얼음','3봉']]},
-  {cat:'안주·간식',ic:'🍿',items:[['과자','10봉'],['마른안주','2봉'],['과일 (귤 등)','1박스']]},
-  {cat:'밤 2부 · 야식',ic:'🔥',items:[['라면 (야식)','12개'],['마시멜로','3봉'],['꼬치 (마시멜로용)','20개'],['계란','10구'],['불꽃놀이 (펜션 OK 시)','1세트']]},
-  {cat:'다음 날',ic:'☕',items:[['커피','10잔분'],['숙취해소제','10개']]},
-  {cat:'생활용품',ic:'🧻',items:[['종이컵 · 접시 · 젓가락','1세트'],['물티슈 · 키친타월','각 2'],['쓰레기봉투','1묶음'],['호일 · 집게 여분','1세트']]}
+  {cat:'술',ic:'🍻',sub:'10명 · 바비큐 5시부터 밤 야식까지 기준',items:[
+    {id:'beer',n:'맥주 500ml 캔',q:'24캔',d:'테라 12 · 카스 12 — 그냥 마시기 + 소맥까지'},
+    {id:'soju',n:'소주 360ml',q:'8병',d:'참이슬 후레쉬 4 · 처음처럼 4'},
+    {id:'mak',n:'막걸리 750ml',q:'2병',d:'장수 생막걸리 · 냉장 보관 (없으면 인천 소성주)'},
+    {id:'whisky',n:'하이볼용 위스키',q:'1병',d:'700ml급 1병이면 약 17잔 · 짐빔 화이트 등 있는 걸로'},
+    {id:'wine',n:'레드 와인 (선택)',q:'1병',d:'고기랑 · 스크류캡이면 오프너 필요 없어요'}]},
+  {cat:'하이볼 재료 · 음료',ic:'🥤',sub:'얼음은 녹으니까 마지막에',items:[
+    {id:'tonic',n:'토닉워터 300ml',q:'4캔',d:'진로 토닉워터 · 하이볼 · 소토닉'},
+    {id:'soda',n:'탄산수 500ml 내외',q:'4병',d:'트레비 · 씨그램 플레인 · 하이볼 베이스'},
+    {id:'lemon',n:'레몬',q:'2개',d:'하이볼 슬라이스 (없으면 레몬즙 1병)'},
+    {id:'na',n:'논알콜 맥주 캔',q:'2개',d:'하이트제로 0.00 등 — 라벨이 0.00인지 확인 (0.0은 미량 알코올)'},
+    {id:'coke',n:'코카콜라 제로 1.5L',q:'1병',d:'안 마시는 분 · 콜라 하이볼'},
+    {id:'cider',n:'칠성사이다 제로 1.5L',q:'1병',d:'안 마시는 분 · 소주 섞기'},
+    {id:'water',n:'생수 2L',q:'6병',d:'마실 물 · 라면 · 다음 날 아침까지'},
+    {id:'ice',n:'얼음',q:'약 5kg',d:'봉지얼음 2–3봉 · 펜션 가기 직전 해변 편의점에서'}]},
+  {cat:'고기',ic:'🥩',sub:'바비큐 17:00 · 숯·그릴은 펜션 제공 (외부 숯·번개탄 반입 금지)',items:[
+    {id:'pork',n:'삼겹살',q:'2kg',d:'고기만 1인 약 350g'},
+    {id:'neck',n:'목살',q:'1.5kg',d:'두툼하게 썬 구이용'},
+    {id:'sausage',n:'구이용 소시지',q:'2봉',d:'킬바사 · 후랑크'},
+    {id:'shrimp',n:'새우 (선택)',q:'1봉',d:'냉동 흰다리 · 대하'}]},
+  {cat:'쌈 · 채소',ic:'🥬',sub:'',items:[
+    {id:'ssam',n:'쌈채소 모둠',q:'3팩',d:'상추 · 치커리 등'},
+    {id:'perilla',n:'깻잎',q:'2묶음',d:''},
+    {id:'garlic',n:'깐마늘',q:'1팩',d:'구워 먹기 · 쌈'},
+    {id:'pepper',n:'청양고추',q:'1봉',d:''},
+    {id:'onion',n:'양파',q:'3개',d:'구이용'},
+    {id:'mush',n:'새송이버섯',q:'1봉',d:''},
+    {id:'leek',n:'파채 + 파절이 소스',q:'2봉 · 1병',d:''}]},
+  {cat:'곁들임 · 밥',ic:'🍚',sub:'',items:[
+    {id:'sauce',n:'쌈장 · 소금 · 참기름',q:'1세트',d:'기름장까지'},
+    {id:'kimchi',n:'김치',q:'1kg',d:'불판에 굽기 + 야식 라면'},
+    {id:'rice',n:'햇반',q:'8개',d:'고기 먹고 밥 찾는 분 몫'},
+    {id:'stew',n:'된장찌개 재료 (선택)',q:'1세트',d:'된장 · 두부 · 애호박'}]},
+  {cat:'밤 2부 · 야식',ic:'🔥',sub:'',items:[
+    {id:'ramen',n:'라면 5개입',q:'2묶음',d:'매운 맛 1 (신라면) · 순한 맛 1 (진라면 순한맛)'},
+    {id:'egg',n:'계란',q:'10구',d:'라면용'},
+    {id:'mallow',n:'마시멜로 (큰 봉)',q:'2봉',d:'불멍 때 1인 4–5개'},
+    {id:'skewer',n:'나무꼬치',q:'1봉',d:'마시멜로 굽기'},
+    {id:'fw',n:'불꽃놀이 (펜션 OK 시만)',q:'1세트',d:'해변은 폭죽 금지 · 라이터 1개 같이'}]},
+  {cat:'안주 · 간식',ic:'🍿',sub:'레크리에이션 · 노래방 · 밤',items:[
+    {id:'chips',n:'과자',q:'8봉',d:'새우깡 · 포카칩 · 꼬북칩 등 섞어서'},
+    {id:'dry',n:'마른안주',q:'2봉',d:'오징어 · 땅콩'},
+    {id:'tang',n:'귤',q:'1봉',d:'2–3kg'}]},
+  {cat:'다음 날 아침',ic:'☕',sub:'18일 아침 3℃ 예보 · 11시 체크아웃 후 칼국수',items:[
+    {id:'coffee',n:'커피',q:'10잔분',d:'캔커피 또는 믹스커피'},
+    {id:'hang',n:'숙취해소제',q:'10개',d:'상쾌환 · 컨디션 등'}]},
+  {cat:'생활용품',ic:'🧻',sub:'',items:[
+    {id:'papercup',n:'종이컵',q:'50개',d:'소주잔 겸용'},
+    {id:'clearcup',n:'투명 일회용 컵',q:'30개',d:'맥주 · 하이볼'},
+    {id:'plate',n:'일회용 접시 · 나무젓가락',q:'30개씩',d:''},
+    {id:'tissue',n:'물티슈 · 키친타월',q:'각 2',d:''},
+    {id:'trash',n:'쓰레기봉투',q:'1묶음',d:'분리수거용 비닐 포함'},
+    {id:'foil',n:'호일 · 위생장갑',q:'각 1',d:''}]}
 ];
-var SHOP_KEYS=[];SHOP.forEach(function(c,ci){c.items.forEach(function(it,ii){SHOP_KEYS.push('i'+ci+'_'+ii)})});
+var SHOP_KEYS=[];SHOP.forEach(function(c){c.items.forEach(function(it){SHOP_KEYS.push(it.id)})});
 
 var RES_DEF=[
   {k:'pension',label:'하늘구름펜션',when:'11/17 – 18 · 1박 · 독채',st:'done',note:'예약 완료'},
@@ -1160,7 +1210,7 @@ var DEC_DEF=[
   {k:'planb',label:'비 · 강풍 오면 플랜 B',note:'레일바이크·배 대신 실내 카페 등'}
 ];
 var DEC_LABEL={open:'논의 중',done:'결정'};
-var PACK=['두꺼운 외투 (바닷바람 주의)','편한 운동화 (낮 액티비티 · 족구)','세면도구','개인 상비약','휴대폰 충전기','여벌 옷','18번 노래 한 곡 🎤','숙취해소제 (선택… 이지만 권장)'];
+var PACK=['두꺼운 외투 + 목도리·장갑 (17일 밤 10℃, 18일 아침 3℃ 예보 · 바닷바람)','핫팩 1–2개 (불멍 · 밤바다 산책)','편한 운동화 (낮 액티비티 · 족구 · 바위 산책)','잠옷 · 여벌 옷 (바비큐·불멍 연기 냄새 배요)','칫솔 · 치약 · 클렌징 · 스킨케어 (수건·샴푸·바디워시는 펜션에 있어요)','휴대폰 충전기 · 보조배터리','개인 상비약 (소화제 · 진통제 등)','렌즈 끼는 분은 렌즈통 · 안경','어릴 적 사진 제출했는지 확인 📸','18번 노래 한 곡 🎤'];
 var AVOID=['해산물 전체','조개류','새우·게','회 (날것)','매운 음식','돼지고기','소고기','없어요'];
 var DRINKS=['소주','맥주','와인','하이볼','막걸리','논알콜 · 안 마셔요'];
 
@@ -1178,7 +1228,7 @@ var FIXED=[['⚽','족구장 자유','16:00 휴식 때','stay'],['🍖','노을 
 var S={me:LS.get('me',null),uid:null,db:null,user:null,dl:null,assets:null,canWrite:null,owner:false,live:false,loaded:false,
   cars:{},riders:{},homes:{},photoStatus:{},foodStatus:{},votes:{},crew:{},shop:{},bstate:{},bconfig:{},bphotos:{},myPhoto:null,myPrefs:null,
   adm:{photos:[],prefs:[],notes:{ai:{}}},day:LS.get('day',1),zoom:true,focusCar:null,pending:null,
-  pack:LS.get('pack',{}),flip:{},cloche:LS.get('cloche',{}),fac:null,celebrated:LS.get('cele',false)};
+  pack:LS.get('pack2',{}),flip:{},cloche:LS.get('cloche',{}),fac:null,celebrated:LS.get('cele',false)};
 if(S.me&&!PK[S.me])S.me=null;
 var SLOTS=['s1','s2','s3','s4','s5','s6'];
 var CARC=['var(--c1)','var(--c2)','var(--c3)','var(--c4)','var(--c5)','var(--c6)'];
@@ -1608,20 +1658,20 @@ function spinTo(sid){
 
 function renderShop(){
   var box=$('#shopList');box.textContent='';var checked=(S.shop&&S.shop.checked)||{};var n=0;
-  SHOP.forEach(function(c,ci){
+  SHOP.forEach(function(c){
     var ul=h('ul',{class:'items'});
-    c.items.forEach(function(it,ii){var key='i'+ci+'_'+ii;var on=!!checked[key];if(on)n++;
+    c.items.forEach(function(it){var key=it.id;var on=!!checked[key];if(on)n++;
       var cb=h('input',{type:'checkbox',id:'sh-'+key});cb.checked=on;
       cb.addEventListener('change',function(){toggleShop(key,cb.checked,cb)});
-      ul.append(h('li',{},h('label',{for:'sh-'+key},cb,h('span',{},it[0]),h('span',{class:'qt'},it[1]))));});
-    box.append(h('div',{class:'cat'},h('h4',{},h('span',{'aria-hidden':'true'},c.ic),c.cat),ul));
+      ul.append(h('li',{},h('label',{for:'sh-'+key},cb,h('span',{class:'nm'},h('b',{},it.n),it.d?h('small',{},it.d):null),h('span',{class:'qt'},it.q))));});
+    box.append(h('div',{class:'cat'},h('h4',{},h('span',{'aria-hidden':'true'},c.ic),c.cat,c.sub?h('small',{},c.sub):null),ul));
   });
   $('#listNum').textContent=n+' / '+SHOP_KEYS.length+' 담음';
   $('#listBar').style.width=Math.round(n/SHOP_KEYS.length*100)+'%';
 }
 function toggleShop(key,val,cb){
   if(!guard(false)){cb.checked=!val;return;}
-  var cur=Object.assign({},(S.shop&&S.shop.checked)||{});if(val)cur[key]=true;else delete cur[key];
+  var old=(S.shop&&S.shop.checked)||{},cur={};SHOP_KEYS.forEach(function(k){if(old[k])cur[k]=true});if(val)cur[key]=true;else delete cur[key];
   S.shop={checked:cur};renderShop();
   write(function(){return S.db.doc('shop/list').set({checked:cur,at:Date.now()})}).then(function(ok){if(ok&&Object.keys(cur).length===SHOP_KEYS.length){burst(.5,.5,80);toast('장보기 완료! 원정대의 영웅들입니다 🛒');}});
 }
@@ -1857,7 +1907,7 @@ function saveFood(e){
 function renderNotice(){$('#noticeText').textContent=S.bconfig.notice||NOTICE_DEF;}
 function renderRes(){var ul=$('#resList');ul.textContent='';resItems().forEach(function(r){ul.append(h('li',{},h('span',{class:'nm'},r.label),h('span',{class:'pill '+r.st},ST_LABEL[r.st]||r.st),h('span',{class:'wh num'},r.when+(r.note?' · '+r.note:''))));});}
 function renderTodo(){var ul=$('#todoList');ul.textContent='';decItems().forEach(function(d){ul.append(h('li',{class:d.st==='done'?'done':''},h('span',{class:'nm'},d.label),h('span',{class:'pill '+(d.st==='done'?'done':'open')},DEC_LABEL[d.st]||'논의 중'),h('span',{class:'nt'},d.note)));});}
-function renderPack(){var ul=$('#packList');ul.textContent='';PACK.forEach(function(p,i){var id='pk'+i;var cb=h('input',{type:'checkbox',id:id});cb.checked=!!S.pack[i];cb.addEventListener('change',function(){S.pack[i]=cb.checked;LS.set('pack',S.pack);});ul.append(h('li',{},h('label',{for:id},cb,h('span',{},p))));});}
+function renderPack(){var ul=$('#packList');ul.textContent='';PACK.forEach(function(p,i){var id='pk'+i;var cb=h('input',{type:'checkbox',id:id});cb.checked=!!S.pack[i];cb.addEventListener('change',function(){S.pack[i]=cb.checked;LS.set('pack2',S.pack);});ul.append(h('li',{},h('label',{for:id},cb,h('span',{},p))));});}
 function fillAreaSelect(sel,ph){sel.textContent='';sel.append(h('option',{value:''},ph));AREA_GROUPS.forEach(function(gr){var og=h('optgroup',{label:gr[0]});areaList(gr[1]).forEach(function(a){og.append(h('option',{value:a},a))});sel.append(og);});}
 
 /* ================= confetti ================= */
@@ -2083,7 +2133,7 @@ function subscribe(){
   }
   if(S.owner){
     db.collection('photos').onSnapshot(function(s){S.adm.photos=s.docs.filter(function(d){return d.exists}).map(function(d){var x=Object.assign({},d.data());x.id=d.id;return x;});renderAdmin();},function(){});
-    db.collection('prefs').onSnapshot(function(s){S.adm.prefs=s.docs.filter(function(d){return d.exists}).map(function(d){return d.data()});renderAdmin();},function(){});
+    db.collection('prefs').onSnapshot(function(s){var by={};s.docs.filter(function(d){return d.exists}).map(function(d){return d.data()}).forEach(function(x){var o=by[x.person];if(!o||(x.at||0)>(o.at||0))by[x.person]=x;});S.adm.prefs=Object.keys(by).map(function(k){return by[k]});renderAdmin();},function(){});
     db.doc('admin/notes').onSnapshot(function(d){S.adm.notes=d.exists?d.data():{ai:{}};renderAdmin();},function(){});
   }
 }
