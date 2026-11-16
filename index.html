@@ -1176,7 +1176,7 @@ var SHOP=[
     {id:'chips',n:'과자',q:'8봉',d:'새우깡 · 포카칩 · 꼬북칩 등 섞어서'},
     {id:'dry',n:'마른안주',q:'2봉',d:'오징어 · 땅콩'},
     {id:'tang',n:'귤',q:'1봉',d:'2–3kg'}]},
-  {cat:'다음 날 아침',ic:'☕',sub:'18일 아침 3℃ 예보 · 11시 체크아웃 후 칼국수',items:[
+  {cat:'다음 날 아침',ic:'☕',sub:'18일 아침 5℃ · 바람 강함 · 11시 체크아웃 후 칼국수',items:[
     {id:'coffee',n:'커피',q:'10잔분',d:'캔커피 또는 믹스커피'},
     {id:'hang',n:'숙취해소제',q:'10개',d:'상쾌환 · 컨디션 등'}]},
   {cat:'생활용품',ic:'🧻',sub:'',items:[
@@ -1210,7 +1210,7 @@ var DEC_DEF=[
   {k:'planb',label:'비 · 강풍 오면 플랜 B',note:'레일바이크·배 대신 실내 카페 등'}
 ];
 var DEC_LABEL={open:'논의 중',done:'결정'};
-var PACK=['두꺼운 외투 + 목도리·장갑 (17일 밤 10℃, 18일 아침 3℃ 예보 · 바닷바람)','핫팩 1–2개 (불멍 · 밤바다 산책)','편한 운동화 (낮 액티비티 · 족구 · 바위 산책)','잠옷 · 여벌 옷 (바비큐·불멍 연기 냄새 배요)','칫솔 · 치약 · 클렌징 · 스킨케어 (수건·샴푸·바디워시는 펜션에 있어요)','휴대폰 충전기 · 보조배터리','개인 상비약 (소화제 · 진통제 등)','렌즈 끼는 분은 렌즈통 · 안경','어릴 적 사진 제출했는지 확인 📸','18번 노래 한 곡 🎤'];
+var PACK=['두꺼운 외투 + 목도리·장갑 (17일 낮 14℃ → 18일 아침 5℃, 북서풍 강해요)','우산 또는 우비 (17일 오후~밤 비 예보)','핫팩 1–2개 (불멍 · 밤바다 산책)','편한 운동화 (낮 액티비티 · 족구 · 바위 산책)','잠옷 · 여벌 옷 (바비큐·불멍 연기 냄새 배요)','칫솔 · 치약 · 클렌징 · 스킨케어 (수건·샴푸·바디워시는 펜션에 있어요)','휴대폰 충전기 · 보조배터리','개인 상비약 (소화제 · 진통제 등)','렌즈 끼는 분은 렌즈통 · 안경','어릴 적 사진 제출했는지 확인 📸','18번 노래 한 곡 🎤'];
 var AVOID=['해산물 전체','조개류','새우·게','회 (날것)','매운 음식','돼지고기','소고기','없어요'];
 var DRINKS=['소주','맥주','와인','하이볼','막걸리','논알콜 · 안 마셔요'];
 
@@ -1228,7 +1228,7 @@ var FIXED=[['⚽','족구장 자유','16:00 휴식 때','stay'],['🍖','노을 
 var S={me:LS.get('me',null),uid:null,db:null,user:null,dl:null,assets:null,canWrite:null,owner:false,live:false,loaded:false,
   cars:{},riders:{},homes:{},photoStatus:{},foodStatus:{},votes:{},crew:{},shop:{},bstate:{},bconfig:{},bphotos:{},myPhoto:null,myPrefs:null,
   adm:{photos:[],prefs:[],notes:{ai:{}}},day:LS.get('day',1),zoom:true,focusCar:null,pending:null,
-  pack:LS.get('pack2',{}),flip:{},cloche:LS.get('cloche',{}),fac:null,celebrated:LS.get('cele',false)};
+  pack:(function(){var o=LS.get('pack3',null);if(o)return o;var old=LS.get('pack2',{}),n={};Object.keys(old).forEach(function(k){var i=+k;n[i>=1?i+1:i]=old[k];});return n;})(),flip:{},cloche:LS.get('cloche',{}),fac:null,celebrated:LS.get('cele',false)};
 if(S.me&&!PK[S.me])S.me=null;
 var SLOTS=['s1','s2','s3','s4','s5','s6'];
 var CARC=['var(--c1)','var(--c2)','var(--c3)','var(--c4)','var(--c5)','var(--c6)'];
@@ -1907,7 +1907,7 @@ function saveFood(e){
 function renderNotice(){$('#noticeText').textContent=S.bconfig.notice||NOTICE_DEF;}
 function renderRes(){var ul=$('#resList');ul.textContent='';resItems().forEach(function(r){ul.append(h('li',{},h('span',{class:'nm'},r.label),h('span',{class:'pill '+r.st},ST_LABEL[r.st]||r.st),h('span',{class:'wh num'},r.when+(r.note?' · '+r.note:''))));});}
 function renderTodo(){var ul=$('#todoList');ul.textContent='';decItems().forEach(function(d){ul.append(h('li',{class:d.st==='done'?'done':''},h('span',{class:'nm'},d.label),h('span',{class:'pill '+(d.st==='done'?'done':'open')},DEC_LABEL[d.st]||'논의 중'),h('span',{class:'nt'},d.note)));});}
-function renderPack(){var ul=$('#packList');ul.textContent='';PACK.forEach(function(p,i){var id='pk'+i;var cb=h('input',{type:'checkbox',id:id});cb.checked=!!S.pack[i];cb.addEventListener('change',function(){S.pack[i]=cb.checked;LS.set('pack2',S.pack);});ul.append(h('li',{},h('label',{for:id},cb,h('span',{},p))));});}
+function renderPack(){var ul=$('#packList');ul.textContent='';PACK.forEach(function(p,i){var id='pk'+i;var cb=h('input',{type:'checkbox',id:id});cb.checked=!!S.pack[i];cb.addEventListener('change',function(){S.pack[i]=cb.checked;LS.set('pack3',S.pack);});ul.append(h('li',{},h('label',{for:id},cb,h('span',{},p))));});}
 function fillAreaSelect(sel,ph){sel.textContent='';sel.append(h('option',{value:''},ph));AREA_GROUPS.forEach(function(gr){var og=h('optgroup',{label:gr[0]});areaList(gr[1]).forEach(function(a){og.append(h('option',{value:a},a))});sel.append(og);});}
 
 /* ================= confetti ================= */
