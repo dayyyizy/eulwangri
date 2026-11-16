@@ -498,6 +498,54 @@ details.fold .fold-in{padding:0 16px 16px;animation:unfold .4s var(--bounce)}
 .lg.star{background:var(--ink);clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)}
 .nocar{margin-top:12px;font-size:.92rem}
 
+
+/* ---------- day plan (rail + bowling) ---------- */
+.route{list-style:none;padding:14px 16px;margin:0 0 16px;display:grid;gap:0}
+.route li{display:grid;grid-template-columns:58px minmax(0,1fr);gap:10px;align-items:start}
+.route time{font-weight:700;font-variant-numeric:tabular-nums;color:var(--sea-deep);padding-top:2px}
+.route .rp b{display:block}
+.route .rp small{color:var(--muted);font-size:.82rem}
+.route .mv{grid-column:2;font-size:.8rem;color:var(--muted);padding:4px 0 8px 12px;border-left:2px dashed var(--line);margin:2px 0 4px 6px}
+.route .split{display:grid;gap:4px;margin-top:4px}
+.route .split span{font-size:.85rem}
+.rules{padding:16px;display:grid;gap:8px;margin-top:16px}
+.rules h3{margin:0;font-size:1.05rem}
+.rules ul{margin:0;padding-left:1.1em;display:grid;gap:4px}
+.rules li{font-size:.92rem}
+/* ---------- money ---------- */
+.msum{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:10px;margin-bottom:12px}
+.mt{padding:14px 16px;border-radius:var(--r);background:var(--surface);border:1px solid var(--line);display:grid;gap:2px}
+.mt small{color:var(--muted);font-size:.8rem;font-weight:700}
+.mt b{font-size:1.45rem;font-variant-numeric:tabular-nums}
+.mt.hi{background:var(--sea);border-color:transparent;color:var(--on-sea)}
+.mt.hi small{color:var(--on-sea);opacity:.85}
+.mt .lprog{margin-top:6px}
+.mt .lprog i{background:var(--ok)}
+.mbox{padding:16px;display:grid;gap:12px;margin-bottom:12px}
+.mform{display:grid;gap:12px;padding:14px;border-radius:14px;background:var(--surface-2)}
+.seg{display:flex;gap:6px;flex-wrap:wrap}
+.seg button{min-height:40px;padding:6px 14px;border-radius:12px;background:var(--surface);border:1px solid var(--line);font-weight:700;color:var(--ink)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:transparent}
+.mlist{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.mlist li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;align-items:center;padding:12px 14px;border-radius:14px;background:var(--bg)}
+.mlist .ml b{display:block}
+.mlist .ml small{color:var(--muted);font-size:.8rem}
+.mlist .mr{text-align:right;display:grid;gap:4px;justify-items:end}
+.mlist .amt{font-weight:700;font-variant-numeric:tabular-nums;font-size:1.05rem}
+.mlist .who{display:inline-block;font-size:.78rem;font-weight:700;padding:1px 8px;border-radius:999px;background:var(--surface-2);margin-right:4px}
+.mlist .edit{grid-column:1/-1;justify-self:start}
+.mlist .empty{display:block;color:var(--muted);text-align:center;background:none}
+.mwho{list-style:none;padding:0;margin:0;display:grid;gap:6px}
+.mwho li{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:8px 0;border-bottom:1px dashed var(--line);font-size:.92rem}
+.mwho li:last-child{border-bottom:0}
+.mwho .get{color:var(--ok);font-weight:700}
+.tk-money{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;padding:10px 12px;border-radius:12px;background:var(--surface-2);text-decoration:none;color:var(--ink);font-size:.88rem}
+.tk-money b{font-variant-numeric:tabular-nums}
+.mfab{position:fixed;left:calc(16px + env(safe-area-inset-left,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:40;display:inline-flex;gap:6px;align-items:center;padding:10px 14px;border-radius:999px;background:var(--surface);color:var(--ink);border:1px solid var(--line);font-size:.86rem;text-decoration:none;box-shadow:0 8px 24px var(--shadow)}
+.mfab b{font-variant-numeric:tabular-nums}
+.mfab:active{transform:scale(.94)}
+.mfab.away{opacity:0;pointer-events:none;transform:translateY(12px)}
+.mfab{transition:opacity .25s,transform .25s}
 /* ---------- food / todo / pack ---------- */
 .food{padding:18px;display:grid;gap:16px}
 .food .private{font-size:.85rem;color:var(--muted)}
@@ -788,7 +836,7 @@ button.n2t:active{transform:scale(.94)}
 </header>
 
 <nav class="chips" aria-label="바로가기"><div class="wrap chips-in">
-  <a href="#me">탑승권</a><a href="#trip">여정</a><a href="#play">낮 액티비티</a><a href="#menu">맛집</a><a href="#stay">펜션</a><a href="#night">레크리에이션</a><a href="#car">카풀</a><a href="#shop">장보기조</a><a href="#food">식사 체크</a><a href="#more">공지·준비물</a>
+  <a href="#me">탑승권</a><a href="#trip">여정</a><a href="#play">낮 액티비티</a><a href="#menu">맛집</a><a href="#stay">펜션</a><a href="#night">레크리에이션</a><a href="#car">카풀</a><a href="#shop">장보기조</a><a href="#money">정산</a><a href="#food">식사 체크</a><a href="#more">공지·준비물</a>
 </div><div class="wrap"><div class="prog" aria-hidden="true"><i id="progFill"></i><span class="pcar" id="progCar">🚗</span><span class="pend">🏖️</span></div></div></nav>
 
 <main>
@@ -815,10 +863,13 @@ button.n2t:active{transform:scale(.94)}
     </section>
 
     <section class="sec" id="play" aria-labelledby="playTitle">
-      <div class="sec-head"><div><p class="eyebrow">DAY ACTIVITY · 11.17 13:00 – 15:00</p><h2 id="playTitle">낮엔 뭐 하고 놀까? <span class="hop" aria-hidden="true">🎈</span></h2><p class="sec-sub">셋 중 하나! 1인 1표, 제일 많이 뽑힌 걸로 갑니다. 마음 바뀌면 다른 걸 누르면 돼요.</p></div></div>
+      <div class="sec-head"><div><p class="eyebrow">DAY ACTIVITY · 11.17 13:00 – 15:30</p><h2 id="playTitle">낮 일정 확정! 레일바이크 → 팀 대항 볼링 <span class="hop" aria-hidden="true">🎳</span></h2><p class="sec-sub">점심 먹고 바로 바다 철길, 그다음 실내 볼링으로 팀전. 이동 시간까지 다 넣었어요.</p></div></div>
+      <div id="playPlan"></div>
+      <details class="fold" style="margin-top:18px"><summary>지난 투표 결과 보기</summary><div class="fold-in">
       <div class="vote-live" id="voteLive" aria-live="polite"></div>
       <div class="votes" id="voteList"></div>
-      <div class="sec-head" style="margin-top:30px;margin-bottom:10px"><div><p class="eyebrow">ALREADY ON</p><h3 class="vote-h">이건 투표 없이 다 해요</h3></div></div>
+      </div></details>
+      <div class="sec-head" style="margin-top:30px;margin-bottom:10px"><div><p class="eyebrow">AT A GLANCE</p><h3 class="vote-h">하루 전체 한눈에</h3></div></div>
       <div class="fixed-row" id="fixedRow"></div>
     </section>
 
@@ -840,9 +891,9 @@ button.n2t:active{transform:scale(.94)}
     <canvas class="fw" id="fw" aria-hidden="true"></canvas>
     <div class="stars" id="stars" aria-hidden="true"></div>
     <div class="wrap">
-      <p class="when">11.17 화 · 19:00 – 20:00</p>
+      <p class="when">11.17 화 · 20:00 – 21:00 · 실내</p>
       <h2 id="nightTitle">레크리에이션 타임 <span class="hop" aria-hidden="true">🎉</span></h2>
-      <p class="sec-sub" style="margin-top:6px">고기로 배 채우고, 본격적인 술자리 직전. 바로 그 골든타임. <span class="tap-hint">밤하늘을 톡 눌러 보세요 🎆</span></p>
+      <p class="sec-sub" style="margin-top:6px">바비큐 마치고 실내로 들어오자마자. 바로 그 골든타임. <span class="tap-hint">진짜 불꽃놀이는 비 때문에 못 하니까, 밤하늘을 톡 눌러 보세요 🎆</span></p>
       <div class="lockrow"><span class="lock" aria-hidden="true">🔒</span><div><b class="num" id="nightCount">--</b><small>봉인 해제까지</small></div></div>
       <div class="myst" id="myst"></div>
 
@@ -867,9 +918,9 @@ button.n2t:active{transform:scale(.94)}
         </div>
       </article>
 
-      <p class="when" style="margin-top:36px">20:00 – 22:00 · 밤 2부</p>
-      <h3 class="night-h3">노래방 · 마당 불멍 · 불꽃놀이</h3>
-      <p class="sec-sub" style="margin-top:4px">한꺼번에 몰아서! 술 들어가다 출출해지면 라면 끓입니다 🍜</p>
+      <p class="when" style="margin-top:36px">21:00 – 24:00 · 밤 2부 · 실내</p>
+      <h3 class="night-h3">노래방 · 야식 라면</h3>
+      <p class="sec-sub" style="margin-top:4px">비 예보라 밤엔 실내에서 몰아서! 고구마 · 마시멜로는 바비큐 때 미리 구워요 🍠</p>
       <div class="n2" id="night2"></div>
       <div class="mallow" id="mallow"></div>
       <p class="foot-note">※ 참여는 필수, 박수도 필수입니다 👏</p>
@@ -898,7 +949,7 @@ button.n2t:active{transform:scale(.94)}
             <label><input type="radio" name="dfSeats" id="dfSeats4" value="4"><span>4명</span></label>
           </div>
         </div>
-        <label class="field" for="dfDep"><span>몇 시쯤 출발할까요? <span class="muted" style="font-weight:500">— 11:50 영종쌈밥 집결</span></span><select class="input" id="dfDep"><option value="10:00">10:00</option><option value="10:15">10:15</option><option value="10:30" selected>10:30</option><option value="10:45">10:45</option><option value="11:00">11:00</option></select></label>
+        <label class="field" for="dfDep"><span>몇 시쯤 출발할까요? <span class="muted" style="font-weight:500">— 12:00 영종쌈밥 집합</span></span><select class="input" id="dfDep"><option value="10:00">10:00</option><option value="10:15">10:15</option><option value="10:30" selected>10:30</option><option value="10:45">10:45</option><option value="11:00">11:00</option></select></label>
         <label class="field" for="dfMeet"><span>탑승자와 만날 곳 (선택)</span><input class="input" id="dfMeet" maxlength="40" placeholder="예: 합정역 2번 출구 · 집 앞 픽업 가능"></label>
         <label class="field" for="dfCar"><span>차 이름 (선택)</span><input class="input" id="dfCar" maxlength="30" placeholder="예: 흰색 쏘렌토 — 주차장에서 찾기 쉽게"></label>
         <p class="safety">둘째 날 귀갓길도 운전이에요. 전날 밤은 ‘적당히’만! 운전자 전용 탄산수 라인을 따로 마련할게요 🥤</p>
@@ -917,9 +968,9 @@ button.n2t:active{transform:scale(.94)}
       <div class="sec-head"><div><p class="eyebrow">STEP 2 · SHOPPING CREW</p><h2 id="shopTitle">장보기조 모집 <span class="hop" aria-hidden="true">🛒</span></h2><p class="sec-sub">먼저 자원 받아요! 아무도 없으면 운전석 잡은 조 하나를 추첨하고, 누구든 사람을 바로 넣을 수도 있어요. 나머지는 체크인조로 펜션에 먼저 들어갑니다.</p></div></div>
       <div class="card draw" id="draw"></div>
       <div class="shop-grid">
-        <div class="card qa"><span class="q">언제?</span><b>첫날 15:00 – 16:00</b><p>낮 액티비티 끝나고 바로 출동. 체크인조가 펜션(입실 15:00)에서 짐 풀고 바비큐 세팅하는 동안 장 봐서 16시 전후 합류해요.</p></div>
+        <div class="card qa"><span class="q">언제?</span><b>첫날 15:30 – 16:30</b><p>볼링 끝나고 바로 출동 (1게임만 치고 먼저 가도 OK). 볼링장 → 마트 차로 11분, 마트 → 펜션 약 30분. 17시 전후 합류해요.</p></div>
         <div class="card qa"><span class="q">어디서?</span><b>하나로마트 중구농협본점</b><p>정육·채소·술을 한 번에. 얼음·추가 술은 을왕리 편의점에서. 주소·전화는 아래 카드에!</p></div>
-        <div class="card qa"><span class="q">체크인조는?</span><b>펜션 먼저 입성 🏡</b><p>짐 풀기 · 방 정리 · 바비큐장 세팅 · 족구장 개시. 장보기조가 도착하면 박수로 맞이하기 👏</p></div>
+        <div class="card qa"><span class="q">체크인조는?</span><b>펜션 먼저 입성 🏡</b><p>짐 풀기 · 방 정리 · 비닐하우스 바비큐장 세팅. 장보기조가 도착하면 박수로 맞이하기 👏</p></div>
       </div>
       <div class="places one" id="martCard"></div>
       <div class="card list">
@@ -927,7 +978,27 @@ button.n2t:active{transform:scale(.94)}
         <div class="lprog"><i id="listBar"></i></div>
         <p class="muted" style="font-size:.86rem">식사 체크에서 고른 주종을 반영하고, 아직 안 내신 분 몫까지 여유를 둔 수량이에요. 술은 넉넉하되 과하지 않게 — 모자라면 해변 편의점에서 바로 보충해요. 마트에서 같이 체크하면 모두의 화면에 바로 반영돼요.</p>
         <div id="shopList"></div>
+        <div class="row" style="margin-top:6px"><button class="btn warm small" type="button" id="shopToMoney">🧾 장 본 금액 정산 칸에 적기</button></div>
       </div>
+    </section>
+
+
+    <section class="sec" id="money" aria-labelledby="moneyTitle">
+      <div class="sec-head"><div><p class="eyebrow">MONEY · 다 같이 보는 가계부</p><h2 id="moneyTitle">정산 <span class="hop" aria-hidden="true">💸</span></h2><p class="sec-sub">누가 무엇에 얼마 냈는지 다 같이 적어요. 누구나 추가 · 수정할 수 있고, 마지막에 1/N로 나눠요.</p></div></div>
+      <div class="msum" id="moneySum"></div>
+      <div class="card mbox">
+        <div class="list-top"><b>지출 내역</b><button class="btn small" type="button" id="moneyAdd">＋ 지출 추가</button></div>
+        <form class="mform" id="moneyForm" hidden>
+          <label class="field" for="mfLabel"><span>무엇에 썼나요?</span><input class="input" id="mfLabel" maxlength="40" placeholder="예: 장보기 (하나로마트)" required></label>
+          <label class="field" for="mfAmt"><span>금액</span><input class="input" id="mfAmt" inputmode="numeric" maxlength="14" placeholder="예: 85000 또는 8.5만" required></label>
+          <label class="field" for="mfPayer"><span>누가 냈나요?</span><select class="input" id="mfPayer"></select></label>
+          <div class="field"><span>상태</span><div class="seg" id="mfSt" role="group" aria-label="결제 상태"><button type="button" data-v="paid" aria-pressed="true">✅ 결제 완료</button><button type="button" data-v="plan" aria-pressed="false">⏳ 가서 결제 예정</button></div></div>
+          <label class="field" for="mfMemo"><span>메모 (선택)</span><input class="input" id="mfMemo" maxlength="60" placeholder="예: 현장 결제 · 영수증은 단톡에"></label>
+          <div class="row"><button class="btn" type="submit" id="mfSave">저장</button><button class="btn ghost" type="button" id="mfCancel">취소</button><button class="btn ghost" type="button" id="mfDel" hidden>삭제</button></div>
+        </form>
+        <ul class="mlist" id="moneyList"></ul>
+      </div>
+      <div class="card mbox" id="moneyWho"></div>
     </section>
 
     <section class="sec" id="food" aria-labelledby="foodTitle">
@@ -964,6 +1035,7 @@ button.n2t:active{transform:scale(.94)}
 <div class="sheet" id="sheet" hidden><div class="sheet-panel" role="dialog" aria-modal="true" aria-labelledby="shTitle" id="sheetPanel"></div></div>
 
 <button class="fab" id="fab" type="button" hidden>🔑 관리실</button>
+<a class="mfab" id="mfab" href="#money" hidden><span aria-hidden="true">💸</span><b id="mfabSum"></b></a>
 <div class="drawer" id="drawer" hidden>
   <div class="dpanel" role="dialog" aria-modal="true" aria-labelledby="admTitle">
     <div class="dhead"><h2 id="admTitle">총괄 관리실</h2><button class="btn ghost small" type="button" id="admClose">닫기</button></div>
@@ -1019,8 +1091,10 @@ function full(k){var p=PK[k];if(!p)return '누군가';return p.t?p.n+' '+p.t:p.n
 function shortName(k){var p=PK[k];return p?p.n:'?';}
 function nick(k){var p=PK[k];return p?p.n.slice(1):'?';}
 
-var NOTICE_DEF='11/17(화) 11:50 영종쌈밥 집결! 장보기조는 자원 먼저 받고, 없으면 운전자 조 중 하나를 추첨합니다. 식사 체크도 한 번만 눌러 주세요.';
-var DEADLINE_DEF='11월 13일(금)';
+var NOTICE_DEF='11/17(화) 낮 12시 영종쌈밥 집합! 레일바이크 → 팀 대항 볼링 → 실내 비닐하우스 바비큐. 오후~밤 비 예보라 우산 꼭 챙겨 주세요. 돈 쓴 건 정산 칸에 같이 적어요 💸';
+var LEGACY_NOTICE=['11/17(화) 11:50 영종쌈밥 집결! 장보기조는 자원 먼저 받고, 없으면 운전자 조 중 하나를 추첨합니다. 식사 체크도 한 번만 눌러 주세요.'];
+function noticeText(){var n=S.bconfig.notice;return (!n||LEGACY_NOTICE.indexOf(n)>=0)?NOTICE_DEF:n;}
+var DEADLINE_DEF='11/16(월) 저녁 8시';
 
 /* scenes: illustrated stand-ins until a real photo is uploaded */
 var SCENES={
@@ -1041,7 +1115,9 @@ var SCENES={
   broom:['sky',[['🧹',48,58,1.05],['✨',76,26,.55],['🧺',22,72,.5]]],
   kal:['warm',[['🍜',50,60,1.15],['🦐',22,30,.55],['🐚',78,28,.5],['🦪',78,74,.45]]],
   home:['sky',[['🏠',50,58,1.1],['🚗',24,76,.5],['💤',80,26,.5]]],
-  karaoke2:['pink',[['🎤',50,56,1.1],['🎵',22,28,.5],['💃',80,70,.55]]]
+  karaoke2:['pink',[['🎤',50,56,1.1],['🎵',22,28,.5],['💃',80,70,.55]]],
+  bowl:['pink',[['🎳',48,58,1.15],['🏆',22,26,.55],['✨',80,24,.5],['🙌',80,74,.45]]],
+  cut:['sky',[['📸',48,58,1.15],['🌊',20,80,.55],['☂️',80,26,.5],['😆',22,26,.45]]]
 };
 /* real-photo galleries the owner fills from 관리실 (several photos per place) */
 var PHOTO_PLACES=[
@@ -1065,12 +1141,17 @@ var PHOTO_DEF={pension:['4c69b75a7440bb818344fee8cf7b4358','bf34f8586a62f13f1e43
 
 var PLACES={
   pension:{name:'하늘구름펜션',addr:'인천 영종구 용유서로302번길 36-1',q:'을왕리 하늘구름펜션',kq:'하늘구름펜션',src:'야놀자 · 카카오맵'},
-  rail:{name:'영종씨사이드 레일바이크',addr:'인천 영종구 구읍로 75',q:'영종씨사이드레일바이크',src:'한국관광공사'},
+  rail:{name:'영종씨사이드 레일바이크',role:'첫날 13:00 – 14:10 · 타는 시간 40분–1시간',pill:'현장 발권',tease:'바다 옆 철길 왕복. 페달은 공평하게, 사진은 열심히.',scene:'rail',photos:['rail'],
+    addr:'인천 영종구 구읍로 75',tel:'0507-1316-7778',hours:'09:00 – 16:20 (탑승 마감)',park:'무료 주차',
+    tips:['쌈밥집에서 차로 3분 · 걸어서 17분','4인승 28,800원 · 3인승 26,100원 (단체)','비 와도 운영 · 환불은 전화 확인'],q:'영종씨사이드레일바이크',src:'카카오맵 · 한국관광공사'},
+  bowl:{name:'비볼링센터 · 팀 대항 볼링',role:'첫날 14:20 – 15:30 · 2게임',pill:'레인 2개 예약',tease:'5:5 팀전. 잘 치는 사람보다 응원하는 팀이 이깁니다.',scene:'bowl',photos:[],
+    addr:'인천 영종구 하늘별빛로65번길 7-9 스카이타워 7층',tel:'032-746-8220',hours:'화 10:00 – 02:00',park:'건물 주차장',
+    tips:['레일바이크에서 차로 6분','볼링화 대여 · 양말 필수 🧦','펜션까지 차로 32분'],q:'영종하늘도시 비볼링센터',kq:'비볼링센터',src:'카카오맵'},
   gull:{name:'구읍뱃터 (영종선착장) → 월미도',addr:'인천 영종구 구읍뱃터 영종선착장',q:'영종선착장 구읍뱃터',kq:'영종선착장',src:'한국관광공사'},
   sunset:{name:'선녀바위 해변',addr:'인천 영종구 을왕동 · 을왕리해수욕장 옆',q:'선녀바위해수욕장',kq:'선녀바위',src:'한국관광공사'},
   ssam:{name:'영종쌈밥',role:'첫날 점심 · 11/17 12:00',tease:'창밖은 바다, 상 위엔 쌈채소 산.',scene:'ssam',photos:['ssam'],
     addr:'인천 영종구 영종진광장로 46 마린파크 3층',tel:'032-751-9995',hours:'매일 11:00 – 21:00 · 라스트오더 20:00 · 연중무휴',park:'건물 지하 무료 주차',
-    tips:['오션뷰 창가석','쌈채소 · 반찬 셀프바','단체석','11:50 집결'],q:'영종쌈밥',src:'다이닝코드',
+    tips:['오션뷰 창가석','쌈채소 · 반찬 셀프바','단체석','12:00 집합'],q:'영종쌈밥',src:'다이닝코드',
     menu:[['영종쌈밥 (1인)','19,900원','쌈채소 무한리필 · 직화제육 · 기장멸치조림 · 우렁이쌈장 · 2인 이상',1],['NEW 직화 고등어구이','9,900원'],['직화제육 한 접시','7,900원'],['기장멸치조림 한 접시','9,900원'],['영종들깨탕','4,900원'],['솥밥','2,000원'],['공기밥','1,000원'],['소주 · 맥주','5,000원'],['막걸리','4,000원'],['청하','6,000원'],['음료','2,000원']],
     menuNote:'가격은 다이닝코드 기준이에요. 방문 전 바뀌었을 수 있어요.'},
   kal:{name:'황해해물칼국수 1호점 (본점)',role:'둘째 날 아점 · 11/18 11:20',tease:'전날 밤의 흔적은 해물 국물로 지웁니다.',scene:'kal',photos:['kal'],
@@ -1078,42 +1159,46 @@ var PLACES={
     tips:['해물 듬뿍 칼국수','셀프바','웨이팅 맛집 → 예약','체크아웃 후 차로 10분 남짓'],q:'황해해물칼국수 본점',kq:'황해해물칼국수 1호점',src:'다이닝코드',
     menu:[['해물칼국수','13,000원','바지락 · 가리비 · 새우 듬뿍 · 1인 1그릇',1],['산낙지 (추가)','20,000원'],['전복 4마리 (추가)','16,000원']],
     menuNote:'가격은 다이닝코드 기준이에요. 해산물 못 드시는 분은 식사 체크에 꼭 표시!'},
-  mart:{name:'하나로마트 중구농협본점',role:'첫날 장보기 · 11/17 15:00',tease:'오늘 밤의 운명이 이 장바구니에.',scene:'cart',photos:['mart'],
+  mart:{name:'하나로마트 중구농협본점',role:'첫날 장보기 · 11/17 15:30',tease:'오늘 밤의 운명이 이 장바구니에.',scene:'cart',photos:['mart'],
     addr:'인천 영종구 운남로 166 (운남동 1523-1)',tel:'032-746-2090',hours:'월 – 토 09:30 – 21:00',
-    tips:['정육 코너 (구이용 삼겹 · 목살)','채소 · 과일 · 주류 한 번에','을왕리까지 차로 20분 안팎'],q:'하나로마트 중구농협본점',kq:'중구농협하나로마트 본점',src:'카카오맵'}
+    tips:['정육 코너 (구이용 삼겹 · 목살)','채소 · 과일 · 주류 한 번에','볼링장에서 차로 11분','펜션까지 차로 약 30분'],q:'하나로마트 중구농협본점',kq:'중구농협하나로마트 본점',src:'카카오맵'}
 };
 
 var STOPS={
- 1:[
-  {k:'depart',t:'10:30',title:'각자 동네에서 출발',scene:'road',tease:'운전자 동네에 3~4명씩 모여서 출발',facts:['출발 시간은 차량별로 조정 (10:00 – 11:00)','11:50 영종쌈밥 앞 전원 집결','서울에서 영종도까지 차로 약 1시간'],go:'car',goLabel:'카풀 정하러 가기'},
-  {k:'ssam',t:'12:00',title:'오션뷰 쌈밥 한 상',scene:'ssam',photos:['ssam'],place:'ssam',tease:'쌈채소 무한리필… 저녁 바비큐는 잠시 잊으세요'},
-  {k:'act',t:'13:00',te:'15:00'},
-  {k:'split',t:'15:00',te:'16:00',title:'장보기조 · 체크인조',scene:'cart',photos:['mart'],place:'mart',tease:'장보기조는 마트로, 나머지는 펜션으로',facts:['장보기조: 먼저 자원 → 없으면 운전자 조 하나 추첨 → 필요하면 사람 추가','체크인조: 펜션 입실(15:00) 후 짐 풀고 바비큐 세팅'],go:'shop',goLabel:'장보기조 보러 가기'},
-  {k:'rest',t:'16:00',te:'17:00',title:'휴식 · 자유시간',scene:'jokgu',photos:['jokgu','pension'],tease:'족구장은 하고 싶은 분만! 낮잠도 대환영',chips:['펜션 족구장 자유 이용','해변 5분 산책','방 정리 · 짐 풀기']},
-  {k:'bbq',t:'17:00',title:'노을 아래 바비큐',scene:'bbq',photos:['bbq'],tease:'지글지글 + 첫 잔 = 원정대 결성식',chips:['펜션 바비큐장','해 지는 시간 약 17:20'],facts:['고기는 바비큐장에서만 (객실 안 굽기 금지)','외부 숯 반입 금지, 펜션 숯 사용']},
-  {k:'rec',t:'19:00',te:'20:00',title:'??? 레크리에이션 타임',scene:'mystery',mc:true,tease:'무엇이 기다리는지는 아직 비밀',go:'night',goLabel:'공개된 게임 하나 보기'},
-  {k:'night2',t:'20:00',te:'22:00',title:'노래방 · 불멍 · 불꽃놀이',scene:'fire',photos:['fire','mallow','karaoke'],tease:'몰아서 놉니다! 출출하면 야식 라면 🍜',chips:['펜션 노래방','마당 불멍 · 마시멜로','불꽃놀이 (펜션 확인 중)','야식 라면'],go:'night',goLabel:'밤 2부 보러 가기'}
- ],
- 2:[
-  {k:'pack',t:'10:30',title:'짐 싸기 · 10분 대청소',scene:'broom',tease:'늦잠은 자유, 정리는 다 같이',facts:['10:30부터 정리 시작','퇴실 점검 있음']},
-  {k:'out',t:'11:00',title:'체크아웃',scene:'pension',photos:['pension'],tease:'고마웠다, 하늘구름펜션!',facts:['늦은 퇴실은 시간당 1만 원']},
-  {k:'kal',t:'11:20',title:'해물칼국수로 아점',scene:'kal',photos:['kal'],place:'kal',tease:'전날 밤의 흔적은 해물 국물로 지웁니다'},
-  {k:'home',t:'12:30',title:'각자 집으로',scene:'home',tease:'운전해 주신 분들께 박수 한 번!',chips:['차량별 귀가']}
- ]
+  1:[
+   {k:'depart',t:'10:30',title:'각자 동네에서 출발',scene:'road',tease:'운전자 동네에 3~4명씩 모여서 출발',facts:['출발 시간은 차량별로 조정 (10:00 – 11:00)','12:00 영종쌈밥 전원 집합','서울에서 영종도까지 차로 약 1시간'],go:'car',goLabel:'카풀 정하러 가기'},
+   {k:'ssam',t:'12:00',te:'13:00',title:'오션뷰 쌈밥 한 상',scene:'ssam',photos:['ssam'],place:'ssam',tease:'쌈채소 무한리필… 저녁 바비큐는 잠시 잊으세요'},
+   {k:'rail',t:'13:00',te:'14:10',title:'바다 위 레일바이크',scene:'rail',photos:['rail'],place:'rail',tease:'쌈밥집에서 차로 3분. 해안 철길 왕복 40분–1시간',chips:['쌈밥집 → 차로 3분 · 걸어서 17분','타는 시간 40분–1시간','현장 발권'],facts:['비 와도 운영 (우천 환불은 업체에 전화 확인)','비가 세면 레일바이크 빼고 볼링 2게임으로','바닷바람이 세서 외투 필수'],go:'play',goLabel:'낮 일정 자세히'},
+   {k:'bowl',t:'14:20',te:'15:30',title:'팀 대항 볼링 🎳',scene:'bowl',photos:[],place:'bowl',tease:'5:5 팀전 2게임. 진 팀은 밤에 라면 담당!',chips:['레일바이크 → 차로 6분','1게임 팀 합산전 · 2게임 릴레이','양말 필수 🧦'],facts:['팀은 볼링장에서 제비뽑기 (카풀 조 섞기)','1게임 30~40분 · 2게임이면 1시간 10~20분','장보기조는 1게임만 치고 먼저 출발해도 OK'],go:'play',goLabel:'볼링 룰 보기'},
+   {k:'split',t:'15:30',te:'16:30',title:'장보기조 · 체크인조',scene:'cart',photos:['mart'],place:'mart',tease:'장보기조는 마트로, 나머지는 펜션으로',facts:['체크인조: 볼링장 → 펜션 차로 32분 · 16시쯤 입실','장보기조: 볼링장 → 마트 11분 → 펜션 약 30분 · 17시 전후 도착','장보기조: 먼저 자원 → 없으면 운전자 조 하나 추첨 → 필요하면 사람 추가'],go:'shop',goLabel:'장보기조 보러 가기'},
+   {k:'rest',t:'16:00',te:'17:00',title:'체크인 · 짐 풀기',scene:'pension',photos:['pension'],tease:'체크인조 먼저 입성! 짐 풀고 바비큐장 세팅',chips:['체크인 15:00부터','수건 · 슬리퍼 비치','비 그치면 을왕네컷 먼저 찍어도 OK']},
+   {k:'bbq',t:'17:00',te:'19:30',title:'비닐하우스 바비큐',scene:'bbq',photos:['bbq','mallow'],tease:'비 와도 끄떡없는 실내 바비큐장. 고구마 · 마시멜로까지 여기서!',chips:['실내 비닐하우스 · 비 OK','밤고구마 · 마시멜로 굽기','라면 · 비빔면도 OK'],facts:['싱크대 · 냉장고 · 식기 30인분 · 냄비 비치','숯은 펜션 제공 · 외부 숯 · 번개탄 반입 금지','이용료 5만 원 현장 결제 (정산 칸에 기록)','끝나면 바로 실내로 — 비 예보라 밤엔 밖에 안 나가요'],go:'money',goLabel:'정산 보기'},
+   {k:'rec',t:'20:00',te:'21:00',title:'??? 레크리에이션 타임',scene:'mystery',mc:true,tease:'실내로 들어오자마자. 무엇이 기다리는지는 아직 비밀',go:'night',goLabel:'공개된 게임 하나 보기'},
+   {k:'night2',t:'21:00',te:'24:00',title:'노래방 · 야식',scene:'karaoke2',photos:['karaoke'],tease:'실내에서 몰아서 놉니다! 출출하면 라면 · 비빔면 🍜',chips:['펜션 노래방','실내 싱크대에서 라면','불꽃놀이는 비 예보로 취소'],go:'night',goLabel:'밤 2부 보러 가기'}
+  ],
+  2:[
+   {k:'cut',t:'10:00',title:'을왕네컷 📸',scene:'cut',photos:['beach'],tease:'을왕리 해변에서 다 같이 한 컷',chips:['펜션에서 걸어서 5분','18일은 낮 12시부터 비 예보 → 오전이 찬스'],facts:['첫날 16시 휴식 때 비가 그치면 먼저 찍어도 OK']},
+   {k:'pack',t:'10:30',title:'짐 싸기 · 10분 대청소',scene:'broom',tease:'늦잠은 자유, 정리는 다 같이',facts:['10:30부터 정리 시작','퇴실 점검 있음']},
+   {k:'out',t:'11:00',title:'체크아웃',scene:'pension',photos:['pension'],tease:'고마웠다, 하늘구름펜션!',facts:['늦은 퇴실은 시간당 1만 원']},
+   {k:'kal',t:'11:20',title:'해물칼국수로 아점',scene:'kal',photos:['kal'],place:'kal',tease:'전날 밤의 흔적은 해물 국물로 지웁니다'},
+   {k:'home',t:'12:30',title:'각자 집으로',scene:'home',tease:'운전해 주신 분들께 박수 한 번!',chips:['차량별 귀가'],facts:['18일 낮부터 비 · 강한 바람 예보 — 운전 조심']}
+  ]
 };
 var MENU=[
   {k:'ssam',when:'첫날 점심 12:00',name:'오션뷰 쌈밥',scene:'ssam',photo:'ssam',line:'쌈채소 무한 + 직화제육 + 기장멸치조림'},
-  {k:'bbq',when:'첫날 저녁 17:00',name:'숯불 바비큐',scene:'bbq',photo:'bbq',line:'삼겹살 · 목살 · 소시지, 노을 보면서'},
-  {k:'night',when:'첫날 밤',name:'야식 라면 & 마시멜로',scene:'ramen',photo:'mallow',line:'술 마시다 라면 한 젓가락, 불멍하며 마시멜로'},
+  {k:'bbq',when:'첫날 저녁 17:00 – 19:30',name:'숯불 바비큐 + 고구마 · 마시멜로',scene:'bbq',photo:'bbq',line:'삼겹살 · 목살 · 소시지, 마무리는 밤고구마와 마시멜로'},
+  {k:'night',when:'첫날 밤',name:'야식 라면 · 비빔면',scene:'ramen',photo:'',line:'노래방 하다 출출하면 실내 싱크대에서 바로 끓이기'},
   {k:'kal',when:'둘째 날 아점 11:20',name:'해물칼국수',scene:'kal',photo:'kal',line:'해물 듬뿍 국물로 완벽 해장'}
 ];
 var FAC=[
-  ['독채','하루 한 팀만. 마당부터 노래방까지 전부 우리 거예요'],
-  ['노래방','매달 신곡 업데이트! 18번 미리 골라 오세요 🎤'],
-  ['바비큐장','숯은 펜션이 넉넉히 준비. 외부 숯은 반입 금지'],
-  ['마당 불멍','밤 2부엔 마당 모닥불 앞에서 마시멜로 굽기 🔥'],
-  ['족구장','16–17시 휴식 때 하고 싶은 분만 자유롭게!'],
-  ['해변 5분','을왕리해수욕장까지 걸어서 5분. 밤바다 산책 가능'],
+  ['독채','하루 한 팀만. 노래방까지 전부 우리 거예요'],
+  ['비닐하우스 바비큐장','실내형이라 비 와도 OK. 숯은 펜션 제공 · 외부 숯 반입 금지'],
+  ['바비큐장 비품','싱크대 · 냉장고 · 식기 30인분 (수저 · 젓가락 · 가위) · 냄비까지'],
+  ['고구마 · 마시멜로','바비큐 숯불에서 같이 구워요. 비 예보라 밤엔 밖에 안 나가요'],
+  ['노래방','매달 신곡 업데이트! 밤 9시부터 실컷 🎤'],
+  ['실내 싱크대','들어와서 라면 · 비빔면 바로 끓여 먹기 OK'],
+  ['슬리퍼 · 수건','비치돼 있어요. 안 챙겨 와도 돼요'],
+  ['해변 5분','을왕리해수욕장까지 걸어서 5분 · 을왕네컷 📸'],
   ['방 2·화장실 2','큰방 2개, 화장실 2개. 방 배정은 곧 공지']
 ];
 var VOTES=[
@@ -1122,15 +1207,14 @@ var VOTES=[
   {k:'sunset',title:'선녀바위 산책',scene:'sunset',place:'sunset',desc:'을왕리 옆 기암괴석 해변. 바위 사이 산책하고 인생샷 건지기.',chips:['펜션에서 가까움','걷기 편한 코스','입장료 없음'],facts:['을왕리해수욕장 바로 옆','바위가 미끄러울 수 있어 운동화 추천']}
 ];
 var NIGHT2=[
-  {k:'sing',ic:'🎤',t:'펜션 노래방',d:'매달 신곡 업데이트. 18번 미리 골라 오세요',photos:['karaoke'],scene:'karaoke2'},
-  {k:'fire',ic:'🔥',t:'마당 불멍 · 마시멜로',d:'모닥불 앞에서 마시멜로 굽기. 확정 일정이에요',photos:['fire','mallow'],scene:'fire'},
-  {k:'fw',ic:'🎆',t:'불꽃놀이',d:'펜션 마당 가능 여부 확인 중 · 해변 폭죽은 금지(과태료)',photos:[],scene:'fw'},
-  {k:'ramen',ic:'🍜',t:'야식 라면',d:'술 마시다 출출해지면 그때 끓입니다',photos:[],scene:'ramen'}
+  {k:'sing',ic:'🎤',t:'펜션 노래방',d:'21시부터 자정까지. 18번 미리 골라 오세요',photos:['karaoke'],scene:'karaoke2'},
+  {k:'ramen',ic:'🍜',t:'야식 라면 · 비빔면',d:'출출하면 실내 싱크대에서 바로 끓여요',photos:[],scene:'ramen'},
+  {k:'fire',ic:'🍠',t:'고구마 · 마시멜로',d:'바비큐 숯불에서 같이 (비 예보라 마당 불멍 대신)',photos:['mallow'],scene:'fire'}
 ];
 var MYST=[
   {hint:'준비물 없음. 순발력만 챙겨 오세요.',back:'아직은 총괄만 압니다 🤫'},
   {hint:'직급 무관. 이 시간만큼은 계급장 떼고!',back:'스포 요청은 간식과 함께 예진에게'},
-  {hint:'우승 팀에게 무언가 걸려 있다는 소문이…',back:'11월 17일 저녁 7시에 공개'}
+  {hint:'우승 팀에게 무언가 걸려 있다는 소문이…',back:'11월 17일 저녁 8시에 공개'}
 ];
 var SHOP=[
   {cat:'술',ic:'🍻',sub:'10명 · 바비큐 5시부터 밤 야식까지 기준',items:[
@@ -1148,7 +1232,7 @@ var SHOP=[
     {id:'cider',n:'칠성사이다 제로 1.5L',q:'1병',d:'안 마시는 분 · 소주 섞기'},
     {id:'water',n:'생수 2L',q:'6병',d:'마실 물 · 라면 · 다음 날 아침까지'},
     {id:'ice',n:'얼음',q:'약 5kg',d:'봉지얼음 2–3봉 · 펜션 가기 직전 해변 편의점에서'}]},
-  {cat:'고기',ic:'🥩',sub:'바비큐 17:00 · 숯·그릴은 펜션 제공 (외부 숯·번개탄 반입 금지)',items:[
+  {cat:'고기',ic:'🥩',sub:'바비큐 17:00 – 19:30 · 실내 비닐하우스 · 숯·그릴은 펜션 제공',items:[
     {id:'pork',n:'삼겹살',q:'2kg',d:'고기만 1인 약 350g'},
     {id:'neck',n:'목살',q:'1.5kg',d:'두툼하게 썬 구이용'},
     {id:'sausage',n:'구이용 소시지',q:'2봉',d:'킬바사 · 후랑크'},
@@ -1166,12 +1250,13 @@ var SHOP=[
     {id:'kimchi',n:'김치',q:'1kg',d:'불판에 굽기 + 야식 라면'},
     {id:'rice',n:'햇반',q:'8개',d:'고기 먹고 밥 찾는 분 몫'},
     {id:'stew',n:'된장찌개 재료 (선택)',q:'1세트',d:'된장 · 두부 · 애호박'}]},
-  {cat:'밤 2부 · 야식',ic:'🔥',sub:'',items:[
-    {id:'ramen',n:'라면 5개입',q:'2묶음',d:'매운 맛 1 (신라면) · 순한 맛 1 (진라면 순한맛)'},
-    {id:'egg',n:'계란',q:'10구',d:'라면용'},
-    {id:'mallow',n:'마시멜로 (큰 봉)',q:'2봉',d:'불멍 때 1인 4–5개'},
+  {cat:'바비큐 디저트 · 야식',ic:'🍠',sub:'고구마 · 마시멜로는 바비큐 숯불에서 (밤엔 실내)',items:[
+    {id:'sweetpotato',n:'밤고구마',q:'1.5kg',d:'호일에 싸서 숯불에 40분쯤'},
+    {id:'mallow',n:'마시멜로 (큰 봉)',q:'2봉',d:'1인 4–5개'},
     {id:'skewer',n:'나무꼬치',q:'1봉',d:'마시멜로 굽기'},
-    {id:'fw',n:'불꽃놀이 (펜션 OK 시만)',q:'1세트',d:'해변은 폭죽 금지 · 라이터 1개 같이'}]},
+    {id:'ramen',n:'라면 5개입',q:'1묶음',d:'신라면 · 진라면 순한맛 등 섞어도 OK'},
+    {id:'bibim',n:'비빔면 5개입',q:'1묶음',d:'팔도비빔면 등'},
+    {id:'egg',n:'계란',q:'10구',d:'라면용'}]},
   {cat:'안주 · 간식',ic:'🍿',sub:'레크리에이션 · 노래방 · 밤',items:[
     {id:'chips',n:'과자',q:'8봉',d:'새우깡 · 포카칩 · 꼬북칩 등 섞어서'},
     {id:'dry',n:'마른안주',q:'2봉',d:'오징어 · 땅콩'},
@@ -1179,38 +1264,35 @@ var SHOP=[
   {cat:'다음 날 아침',ic:'☕',sub:'18일 아침 5℃ · 바람 강함 · 11시 체크아웃 후 칼국수',items:[
     {id:'coffee',n:'커피',q:'10잔분',d:'캔커피 또는 믹스커피'},
     {id:'hang',n:'숙취해소제',q:'10개',d:'상쾌환 · 컨디션 등'}]},
-  {cat:'생활용품',ic:'🧻',sub:'',items:[
-    {id:'papercup',n:'종이컵',q:'50개',d:'소주잔 겸용'},
-    {id:'clearcup',n:'투명 일회용 컵',q:'30개',d:'맥주 · 하이볼'},
-    {id:'plate',n:'일회용 접시 · 나무젓가락',q:'30개씩',d:''},
+  {cat:'생활용품',ic:'🧻',sub:'식기 30인분 · 수저 · 가위 · 냄비는 펜션에 있어요',items:[
+    {id:'papercup',n:'종이컵',q:'30개',d:'컵 모자랄 때 대비 · 소주잔 겸용'},
     {id:'tissue',n:'물티슈 · 키친타월',q:'각 2',d:''},
     {id:'trash',n:'쓰레기봉투',q:'1묶음',d:'분리수거용 비닐 포함'},
-    {id:'foil',n:'호일 · 위생장갑',q:'각 1',d:''}]}
+    {id:'foil',n:'호일 · 위생장갑',q:'각 1',d:'호일은 고구마 굽기용'}]}
 ];
 var SHOP_KEYS=[];SHOP.forEach(function(c){c.items.forEach(function(it){SHOP_KEYS.push(it.id)})});
 
 var RES_DEF=[
   {k:'pension',label:'하늘구름펜션',when:'11/17 – 18 · 1박 · 독채',st:'done',note:'예약 완료'},
   {k:'ssam',label:'영종쌈밥 · 첫날 점심',when:'11/17 12:00',st:'soon',note:'10명 단체 예약'},
-  {k:'act',label:'낮 액티비티 (투표 1위)',when:'11/17 13:00 – 15:00',st:'check',note:'투표 결과 보고 예약'},
-  {k:'kal',label:'황해해물칼국수 본점 · 둘째 날 아점',when:'11/18 11:20',st:'soon',note:'10명 단체 예약'},
-  {k:'bbq',label:'펜션 바비큐장 (숯·그릴)',when:'11/17 17:00',st:'check',note:'이용료 펜션에 확인 중'},
-  {k:'fire',label:'마당 불멍 · 불꽃놀이',when:'11/17 20:00 – 22:00',st:'check',note:'펜션 마당 가능 여부 확인 중'},
-  {k:'mart',label:'하나로마트 정육 코너',when:'11/17 15:00',st:'check',note:'전화로 확인 예정'}
+  {k:'rail',label:'영종씨사이드 레일바이크',when:'11/17 13:00 – 14:10',st:'check',note:'현장 발권 · 우천 운영 · 환불 전화 확인'},
+  {k:'bowl',label:'비볼링센터 · 팀 대항 볼링',when:'11/17 14:20 – 15:30',st:'check',note:'레인 2개 전화 예약'},
+  {k:'bbq2',label:'펜션 바비큐장 (실내 비닐하우스)',when:'11/17 17:00 – 19:30',st:'done',note:'5만 원 · 현장 결제'},
+  {k:'mart',label:'하나로마트 정육 코너',when:'11/17 15:30',st:'check',note:'전화로 확인 예정'},
+  {k:'kal',label:'황해해물칼국수 본점 · 둘째 날 아점',when:'11/18 11:20',st:'soon',note:'10명 단체 예약'}
 ];
 var ST_LABEL={done:'확정',soon:'예약 예정',check:'확인 중'};
 var DEC_DEF=[
-  {k:'fee',label:'회비 · 정산 방식',note:'1인 분담금, 선입금 여부'},
+  {k:'fee2',label:'회비 · 정산',note:'정산 칸에 다 같이 기록 → 마지막에 1/N'},
   {k:'fuel',label:'운전자 유류비 · 톨비',note:'탑승자끼리 나누는 방식'},
-  {k:'meet',label:'차량별 출발 시간 · 만날 곳',note:'운전자가 카풀 칸에 적어 주시면 끝'},
-  {k:'act',label:'낮 액티비티',note:'투표 1위로 확정'},
+  {k:'meet2',label:'집합',st:'done',note:'11/17 낮 12시 영종쌈밥 · 출발 시간은 차량별로'},
+  {k:'act2',label:'낮 액티비티',st:'done',note:'레일바이크 → 팀 대항 볼링'},
   {k:'crew',label:'장보기조',note:'자원 먼저 · 없으면 운전자 조 추첨 · 사람 추가 가능'},
   {k:'room',label:'방 배정',note:'여자방 · 남자방, 침구 수 확인'},
-  {k:'fw',label:'불꽃놀이',note:'해변 폭죽은 금지 구역 · 펜션 마당 가능한지 확인'},
-  {k:'planb',label:'비 · 강풍 오면 플랜 B',note:'레일바이크·배 대신 실내 카페 등'}
+  {k:'planb2',label:'비 오면 플랜 B',note:'비가 세면 레일바이크 빼고 볼링 2게임'}
 ];
 var DEC_LABEL={open:'논의 중',done:'결정'};
-var PACK=['두꺼운 외투 + 목도리·장갑 (17일 낮 14℃ → 18일 아침 5℃, 북서풍 강해요)','우산 또는 우비 (17일 오후~밤 비 예보)','핫팩 1–2개 (불멍 · 밤바다 산책)','편한 운동화 (낮 액티비티 · 족구 · 바위 산책)','잠옷 · 여벌 옷 (바비큐·불멍 연기 냄새 배요)','칫솔 · 치약 · 클렌징 · 스킨케어 (수건·샴푸·바디워시는 펜션에 있어요)','휴대폰 충전기 · 보조배터리','개인 상비약 (소화제 · 진통제 등)','렌즈 끼는 분은 렌즈통 · 안경','어릴 적 사진 제출했는지 확인 📸','18번 노래 한 곡 🎤'];
+var PACK=['우산 또는 우비 (17일 오후~밤 비 예보)','두꺼운 외투 + 목도리·장갑 (17일 낮 14℃ → 18일 아침 5℃, 바람 강해요)','핫팩 1–2개 (레일바이크 · 비닐하우스 바비큐)','양말 여분 (볼링화 대여 때 필수)','편한 운동화','잠옷 · 갈아입을 옷 (비 · 고기 냄새 대비)','칫솔 · 치약 · 클렌징 · 스킨케어 (수건 · 샴푸 · 바디워시 · 슬리퍼는 펜션에 있어요)','휴대폰 충전기 · 보조배터리','개인 상비약','렌즈 끼는 분은 렌즈통 · 안경'];
 var AVOID=['해산물 전체','조개류','새우·게','회 (날것)','매운 음식','돼지고기','소고기','없어요'];
 var DRINKS=['소주','맥주','와인','하이볼','막걸리','논알콜 · 안 마셔요'];
 
@@ -1222,13 +1304,13 @@ var AREA_GROUPS=[['서울','s'],['경기','g'],['인천','i']];
 function areaList(g){return METRO.areas.filter(function(a){return a[1]===g}).map(function(a){return a[0]}).sort(function(a,b){return a.localeCompare(b,'ko')});}
 function PJ(lng,lat){return [(lng-METRO.lng0)*METRO.c*METRO.k,(METRO.lat1-lat)*METRO.k];}
 function shortArea(a){var g=GU[a];return g?g.l:a;}
-var FIXED=[['⚽','족구장 자유','16:00 휴식 때','stay'],['🍖','노을 바비큐','17:00','menu'],['🎉','레크리에이션','19:00','night'],['🎤','노래방','20:00~','night'],['🔥','불멍 · 마시멜로','20:00~','night'],['🎆','불꽃놀이','20:00~ · 확인 중','night']];
+var FIXED=[['🚲','레일바이크','13:00 – 14:10','trip'],['🎳','팀 대항 볼링','14:20 – 15:30','play'],['🍖','비닐하우스 바비큐','17:00 – 19:30','menu'],['🍠','고구마 · 마시멜로','바비큐 때','menu'],['🎉','레크리에이션','20:00','night'],['🎤','노래방 · 야식','21:00 – 24:00','night'],['📸','을왕네컷','둘째 날 10:00','trip'],['💸','정산','언제든','money']];
 
 /* ================= state ================= */
 var S={me:LS.get('me',null),uid:null,db:null,user:null,dl:null,assets:null,canWrite:null,owner:false,live:false,loaded:false,
-  cars:{},riders:{},homes:{},photoStatus:{},foodStatus:{},votes:{},crew:{},shop:{},bstate:{},bconfig:{},bphotos:{},myPhoto:null,myPrefs:null,
+  cars:{},riders:{},homes:{},photoStatus:{},foodStatus:{},votes:{},crew:{},shop:{},money:{},bstate:{},bconfig:{},bphotos:{},myPhoto:null,myPrefs:null,
   adm:{photos:[],prefs:[],notes:{ai:{}}},day:LS.get('day',1),zoom:true,focusCar:null,pending:null,
-  pack:(function(){var o=LS.get('pack3',null);if(o)return o;var old=LS.get('pack2',{}),n={};Object.keys(old).forEach(function(k){var i=+k;n[i>=1?i+1:i]=old[k];});return n;})(),flip:{},cloche:LS.get('cloche',{}),fac:null,celebrated:LS.get('cele',false)};
+  pack:LS.get('pack4',{}),flip:{},cloche:LS.get('cloche',{}),fac:null,celebrated:LS.get('cele',false)};
 if(S.me&&!PK[S.me])S.me=null;
 var SLOTS=['s1','s2','s3','s4','s5','s6'];
 var CARC=['var(--c1)','var(--c2)','var(--c3)','var(--c4)','var(--c5)','var(--c6)'];
@@ -1263,8 +1345,8 @@ function guard(needUid){
 }
 function fmtTime(ts){if(!ts)return '';var d=new Date(ts);return (d.getMonth()+1)+'/'+d.getDate()+' '+String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0');}
 function resItems(){var o=S.bstate.res||{};return RES_DEF.map(function(r){var x=o[r.k]||{};return {k:r.k,label:r.label,when:r.when,st:x.st||r.st,note:x.note!=null?x.note:r.note};});}
-function decItems(){var o=S.bstate.dec||{};return DEC_DEF.map(function(r){var x=o[r.k]||{};return {k:r.k,label:r.label,st:x.st||'open',note:x.note!=null&&x.note!==''?x.note:r.note};});}
-function deadline(){return S.bconfig.deadline||DEADLINE_DEF;}
+function decItems(){var o=S.bstate.dec||{};return DEC_DEF.map(function(r){var x=o[r.k]||{};return {k:r.k,label:r.label,st:x.st||r.st||'open',note:x.note!=null&&x.note!==''?x.note:r.note};});}
+function deadline(){var d=S.bconfig.deadline;return (!d||d==='11월 13일(금)')?DEADLINE_DEF:d;}
 function naver(q){return 'https://map.naver.com/p/search/'+encodeURIComponent(q);}
 function kakao(q){return 'https://map.kakao.com/link/search/'+encodeURIComponent(q);}
 function copy(text,btn){try{navigator.clipboard.writeText(text).then(function(){toast('복사했어요')},function(){selectText(btn)});}catch(e){selectText(btn);}}
@@ -1302,7 +1384,7 @@ function placeCard(k){
   var pl=PLACES[k];var card=h('article',{class:'card place'});
   card.append(galleryEl(pl.photos,pl.scene,'pl-vis'));
   var body=h('div',{class:'pl-body'});
-  body.append(h('div',{class:'row',style:'justify-content:space-between'},h('span',{class:'when-tag'},pl.role),h('span',{class:'pill soon'},k==='mart'?'장보기조 출동지':'단체 예약 예정')));
+  body.append(h('div',{class:'row',style:'justify-content:space-between'},h('span',{class:'when-tag'},pl.role),h('span',{class:'pill soon'},pl.pill||(k==='mart'?'장보기조 출동지':'단체 예약 예정'))));
   body.append(h('h3',{},pl.name),h('p',{class:'sh-tease'},pl.tease));
   if(pl.tips)body.append(h('div',{class:'chiprow'},pl.tips.map(function(t){return h('span',{class:'chip'},t)})));
   body.append(placeInfo(k));
@@ -1336,7 +1418,7 @@ function renderHeroTitle(){
   var h1=$('#heroTitle');h1.textContent='';var i=0;
   ['을왕리','원정대'].forEach(function(w,wi){Array.from(w).forEach(function(ch){h1.append(h('span',{class:'ch','aria-hidden':'true',style:'--i:'+(i++)},ch));});if(wi===0)h1.append(h('br'));});
 }
-var DEPART=Date.UTC(2026,10,17,1,30),MCOPEN=Date.UTC(2026,10,17,10,0);
+var DEPART=Date.UTC(2026,10,17,1,30),MCOPEN=Date.UTC(2026,10,17,11,0);
 var lastC={};
 function setDigit(id,v){var el=$('#'+id);var s=String(v);if(lastC[id]!==s){el.textContent=s;if(lastC[id]!=null&&!RM){el.classList.remove('tick');void el.offsetWidth;el.classList.add('tick');}lastC[id]=s;}}
 function tick(){
@@ -1373,6 +1455,7 @@ function renderTicket(){
       h('div',{},h('small',{},'TEAM'),h('b',{},{shop:'🛒 장보기',check:'🏡 체크인',wait:'🎰 공개 대기'}[teamOf(S.me)]||'모집 중'))));
     m.append(h('button',{class:'linkish',type:'button',style:'justify-self:start',onclick:function(){S.me=null;LS.set('me',null);renderLive();}},'제가 아니에요'));
   }
+  var ms=moneyStats();m.append(h('a',{class:'tk-money',href:'#money'},h('span',{},'💸 지금까지 ',h('b',{},won(ms.tot)),' · 1인 약 ',h('b',{},won(Math.round(ms.tot/ms.n/100)*100))),h('span',{class:'linkish'},'정산 보기')));
   var stamps=[{label:'어릴 적 사진',done:!!(S.me&&photoDone(S.me)),go:'night'},{label:'카풀',done:!!c,go:'car'},{label:'식사 체크',done:!!(S.me&&foodDone(S.me)),go:'food'}];
   var st=$('#tkStamps');st.textContent='';
   stamps.forEach(function(s){st.append(h('a',{class:'stamp'+(s.done?' done':''),href:'#'+s.go},h('div',{},h('em',{},s.done?'OK':'＋'),h('br'),h('span',{},s.label))));});
@@ -1395,7 +1478,7 @@ function renderRail(keep){
   var crewN=crewList().length;
   STOPS[S.day].forEach(function(s0,i){var s=stopView(s0);
     var vis=coverFor(s.photos||[],s.scene);
-    var badge=s.vote?h('span',{class:'badge vote'},'투표 중'):(s.k==='split'?h('span',{class:'badge vote'},crewN?'🛒 장보기조 '+crewN+'명':'🙋 자원 받는 중'):((s.k==='ssam'||s.k==='kal')?h('span',{class:'badge'},'예약 맛집'):null));
+    var badge=s.vote?h('span',{class:'badge vote'},'투표 중'):s.k==='bowl'?h('span',{class:'badge vote'},'🏆 팀 대항전'):(s.k==='split'?h('span',{class:'badge vote'},crewN?'🛒 장보기조 '+crewN+'명':'🙋 자원 받는 중'):((s.k==='ssam'||s.k==='kal')?h('span',{class:'badge'},'예약 맛집'):null));
     r.append(h('button',{class:'stop'+(s.mc?' mc':''),type:'button',style:'--k:'+i,onclick:function(){openSheet(stopView(s0))},'aria-label':s.t+' '+s.title+' 자세히'},h('div',{style:'position:relative'},vis,badge),h('div',{class:'meta'},h('time',{},s.t+(s.te?' – '+s.te:'')),h('h3',{},s.title),h('p',{},s.tease))));
   });
   r.scrollLeft=sl;
@@ -1453,6 +1536,22 @@ function toggleVote(k,btn){
   write(function(){return S.db.doc('votes/'+S.me).set({picks:next,at:Date.now()})},cur===k?'투표를 취소했어요':(cur?'‘'+voteTitle(k)+'’(으)로 갈아탔어요!':'한 표 접수! 🗳️')).then(function(ok){if(ok&&next.length&&btn){var rr=btn.getBoundingClientRect();popAt(rr.left+rr.width/2,rr.top,['❤️','💖','✨','🗳️','💕']);}});
 }
 
+
+/* ================= day plan (rail → bowling) ================= */
+function renderPlayPlan(){var box=$('#playPlan');if(!box)return;box.textContent='';
+  var R=[['12:00','🥬 영종쌈밥 점심','구읍뱃터 앞','🚗 차로 3분 · 🚶 걸어서 17분'],
+         ['13:00','🚲 영종씨사이드 레일바이크','타는 시간 40분–1시간 (현장 발권)','🚗 차로 6분'],
+         ['14:20','🎳 팀 대항 볼링 · 비볼링센터','5:5 · 2게임 · 약 1시간 10분',null],
+         ['15:30','갈라지기',null,null]];
+  var ol=h('ol',{class:'route card'});
+  R.forEach(function(r){ol.append(h('li',{},h('time',{},r[0]),h('div',{class:'rp'},h('b',{},r[1]),r[2]?h('small',{},r[2]):null,
+    r[1]==='갈라지기'?h('div',{class:'split'},h('span',{},'🏡 체크인조 → 펜션 · 차로 32분 · 16시쯤 입실'),h('span',{},'🛒 장보기조 → 하나로마트 11분 → 펜션 약 30분 · 17시 전후')):null)));
+    if(r[3])ol.append(h('li',{},h('span'),h('span',{class:'mv'},r[3])));});
+  box.append(ol);
+  box.append(h('div',{class:'places'},placeCard('rail'),placeCard('bowl')));
+  box.append(h('article',{class:'card rules'},h('h3',{},'🎳 팀 대항 볼링 룰'),h('ul',{},
+    ['팀은 볼링장에서 제비뽑기 (카풀 조는 섞어서) · 5:5','1게임: 팀 점수 합산전 — 개인 점수 말고 팀 총점으로','2게임: 릴레이 — 한 프레임의 1구 · 2구를 다른 사람이 던져요','미션 프레임: 왼손으로 한 번, 뒤돌아서 한 번','진 팀은 밤에 라면 담당 + 설거지 🍜 · 이긴 팀은 레크리에이션 보너스','볼링화 대여라 양말 필수 🧦 · 장보기조는 1게임만 치고 먼저 가도 OK'].map(function(t){return h('li',{},t)}))));
+}
 /* ================= menu ================= */
 function renderMenu(){
   var g=$('#menuGrid');g.textContent='';
@@ -1903,11 +2002,68 @@ function saveFood(e){
    .then(function(ok){btn.disabled=false;if(ok){S.foodDirty=false;S.myPrefs=body;burst(.5,.6,40);renderLive();}});
 }
 
+
+/* ================= money (shared ledger) ================= */
+var MF={edit:null,st:'paid'};
+function won(n){return (Math.round(n)||0).toLocaleString('ko-KR')+'원';}
+function man(n){if(n<10000)return won(n);var v=Math.round(n/1000)/10;return (v%1?v.toFixed(1):String(v))+'만 원';}
+function parseAmt(t){t=String(t||'').replace(/[,\s원]/g,'');if(!t)return NaN;var m=t.match(/^([\d.]+)만([\d.]*)$/);
+  if(m)return Math.round(parseFloat(m[1])*10000+(m[2]?parseFloat(m[2]):0));return /^\d+$/.test(t)?parseInt(t,10):NaN;}
+function moneyRows(){var o=S.money||{};return Object.keys(o).map(function(id){var x=Object.assign({},o[id]);x.id=id;return x;})
+  .filter(function(x){return x.label&&typeof x.amount==='number'&&x.amount>=0;}).sort(function(a,b){return (a.at0||a.at||0)-(b.at0||b.at||0)});}
+function moneyStats(){var rows=moneyRows(),tot=0,paid=0,by={};rows.forEach(function(x){tot+=x.amount;if(x.st==='paid'){paid+=x.amount;if(x.payer&&PK[x.payer])by[x.payer]=(by[x.payer]||0)+x.amount;}});
+  return {rows:rows,tot:tot,paid:paid,plan:tot-paid,by:by,n:PEOPLE.length};}
+function renderMoneyForm(){var sel=$('#mfPayer');if(!sel)return;sel.textContent='';sel.append(h('option',{value:''},'아직 안 냄 · 미정'));
+  PEOPLE.forEach(function(p){sel.append(h('option',{value:p.k},p.host?p.n+' (총괄)':full(p.k)))});
+  $$('#mfSt button').forEach(function(b){b.addEventListener('click',function(){MF.st=b.dataset.v;$$('#mfSt button').forEach(function(o){o.setAttribute('aria-pressed',String(o===b))});});});
+  $('#moneyAdd').addEventListener('click',function(){openMoneyForm(null)});
+  $('#mfCancel').addEventListener('click',closeMoneyForm);
+  $('#mfDel').addEventListener('click',function(e){var id=MF.edit;if(!id)return;armed(e.currentTarget,'정말 삭제할까요?',function(){if(!guard(false))return;write(function(){return S.db.doc('money/'+id).delete()},'지출을 지웠어요').then(function(ok){if(ok)closeMoneyForm();});});});
+  $('#moneyForm').addEventListener('submit',saveMoney);
+  var stm=$('#shopToMoney');if(stm)stm.addEventListener('click',function(){goTo('money');openMoneyForm(null,{label:'장보기 (하나로마트)',payer:S.me||'',st:'paid'});});
+}
+function openMoneyForm(id,pre){var x=id?(S.money||{})[id]:null;pre=pre||{};MF.edit=id||null;
+  $('#mfLabel').value=x?x.label:(pre.label||'');$('#mfAmt').value=x?String(x.amount):'';$('#mfPayer').value=x?(x.payer||''):(pre.payer!=null?pre.payer:(S.me||''));
+  MF.st=x?(x.st==='plan'?'plan':'paid'):(pre.st||'paid');$$('#mfSt button').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.v===MF.st))});
+  $('#mfMemo').value=x?(x.memo||''):'';$('#mfDel').hidden=!id;$('#mfSave').textContent=id?'수정 저장':'저장';
+  $('#moneyForm').hidden=false;$('#moneyAdd').hidden=true;setTimeout(function(){$('#mfLabel').focus({preventScroll:true});},60);
+  $('#moneyForm').scrollIntoView({behavior:RM?'auto':'smooth',block:'center'});}
+function closeMoneyForm(){MF.edit=null;$('#moneyForm').hidden=true;$('#moneyAdd').hidden=false;}
+function saveMoney(e){e.preventDefault();if(!guard(false))return;
+  var label=$('#mfLabel').value.trim().slice(0,40),amt=parseAmt($('#mfAmt').value);
+  if(!label){toast('무엇에 썼는지 적어 주세요');$('#mfLabel').focus();return;}
+  if(!(amt>=0)||amt>10000000){toast('금액을 숫자로 적어 주세요 (예: 85000 또는 8.5만)');$('#mfAmt').focus();return;}
+  var payer=$('#mfPayer').value;if(payer&&!PK[payer])payer='';
+  var id=MF.edit||('m'+Date.now().toString(36)+Math.random().toString(36).slice(2,6));var old=(S.money||{})[id];
+  var body={label:label,amount:amt,payer:payer,st:MF.st==='plan'?'plan':'paid',memo:$('#mfMemo').value.trim().slice(0,60),by:S.me,at:Date.now(),at0:(old&&(old.at0||old.at))||Date.now()};
+  var btn=$('#mfSave');btn.disabled=true;
+  write(function(){return S.db.doc('money/'+id).set(body)},MF.edit?'수정했어요':'정산 칸에 적었어요 💸').then(function(ok){btn.disabled=false;if(ok){closeMoneyForm();var r=btn.getBoundingClientRect();popAt(r.left+r.width/2,r.top,['💸','🧾','✨']);}});}
+function renderMoney(){var st=moneyStats();var sum=$('#moneySum');if(!sum)return;sum.textContent='';
+  var per=st.tot/st.n,pctPaid=st.tot?Math.round(st.paid/st.tot*100):0;
+  sum.append(h('div',{class:'mt hi'},h('small',{},'총 지출 (예정 포함)'),h('b',{},won(st.tot)),h('small',{},st.rows.length+'건')),
+    h('div',{class:'mt'},h('small',{},'1인당 · '+st.n+'명'),h('b',{},'약 '+won(Math.round(per/100)*100)),h('small',{},'예정 금액까지 다 낸다고 치면')),
+    h('div',{class:'mt'},h('small',{},'결제 완료 / 가서 낼 돈'),h('b',{},won(st.paid)),h('small',{},'예정 '+won(st.plan)),h('div',{class:'lprog'},h('i',{style:'width:'+pctPaid+'%'}))));
+  var ul=$('#moneyList');ul.textContent='';
+  if(!st.rows.length)ul.append(h('li',{class:'empty'},'아직 적힌 지출이 없어요. 첫 지출을 적어 주세요.'));
+  st.rows.forEach(function(x){var pay=x.payer&&PK[x.payer]?shortName(x.payer)+' 결제':'결제자 미정';
+    ul.append(h('li',{},h('div',{class:'ml'},h('b',{},x.label),h('small',{},h('span',{class:'who'},pay),(x.memo?x.memo+' · ':'')+(x.by&&PK[x.by]?shortName(x.by)+' 입력 ':'')+fmtTime(x.at))),
+      h('div',{class:'mr'},h('span',{class:'amt'},won(x.amount)),h('span',{class:'pill '+(x.st==='paid'?'done':'soon')},x.st==='paid'?'결제 완료':'가서 결제')),
+      h('button',{class:'linkish edit',type:'button',onclick:function(){openMoneyForm(x.id)}},'수정 · 삭제')));});
+  var who=$('#moneyWho');who.textContent='';var share=st.paid/st.n;
+  who.append(h('div',{class:'list-top'},h('b',{},'누가 얼마 냈나 · 결제 완료 기준'),h('span',{class:'muted',style:'font-size:.85rem'},'지금 1인 분담금 '+won(Math.round(share)))));
+  var payers=Object.keys(st.by);var wl=h('ul',{class:'mwho'});
+  if(!payers.length)wl.append(h('li',{},h('span',{class:'muted'},'아직 결제 완료된 지출이 없어요')));
+  payers.sort(function(a,b){return st.by[b]-st.by[a]}).forEach(function(k){var d=st.by[k]-share;
+    wl.append(h('li',{},h('span',{},h('b',{},full(k)),' '+won(st.by[k])+' 냄'),h('span',{class:d>=0?'get':''},d>=0?'정산 때 '+won(Math.round(d))+' 받기':'정산 때 '+won(Math.round(-d))+' 보내기')));});
+  who.append(wl,h('p',{class:'muted',style:'font-size:.85rem;margin:0'},'안 낸 분은 1인 분담금만큼 보내면 끝. 가서 결제한 뒤엔 그 줄을 눌러 ‘결제 완료’와 낸 사람으로 바꿔 주세요 → 자동 반영돼요.'));
+  var fab=$('#mfab');if(fab){fab.hidden=!st.tot;$('#mfabSum').textContent=st.tot?man(st.tot)+' · 1인 '+man(Math.round(per/100)*100):'';}
+  renderTicket();
+}
 /* ================= notices ================= */
-function renderNotice(){$('#noticeText').textContent=S.bconfig.notice||NOTICE_DEF;}
+function renderNotice(){$('#noticeText').textContent=noticeText();}
 function renderRes(){var ul=$('#resList');ul.textContent='';resItems().forEach(function(r){ul.append(h('li',{},h('span',{class:'nm'},r.label),h('span',{class:'pill '+r.st},ST_LABEL[r.st]||r.st),h('span',{class:'wh num'},r.when+(r.note?' · '+r.note:''))));});}
 function renderTodo(){var ul=$('#todoList');ul.textContent='';decItems().forEach(function(d){ul.append(h('li',{class:d.st==='done'?'done':''},h('span',{class:'nm'},d.label),h('span',{class:'pill '+(d.st==='done'?'done':'open')},DEC_LABEL[d.st]||'논의 중'),h('span',{class:'nt'},d.note)));});}
-function renderPack(){var ul=$('#packList');ul.textContent='';PACK.forEach(function(p,i){var id='pk'+i;var cb=h('input',{type:'checkbox',id:id});cb.checked=!!S.pack[i];cb.addEventListener('change',function(){S.pack[i]=cb.checked;LS.set('pack3',S.pack);});ul.append(h('li',{},h('label',{for:id},cb,h('span',{},p))));});}
+function renderPack(){var ul=$('#packList');ul.textContent='';PACK.forEach(function(p,i){var id='pk'+i;var cb=h('input',{type:'checkbox',id:id});cb.checked=!!S.pack[i];cb.addEventListener('change',function(){S.pack[i]=cb.checked;LS.set('pack4',S.pack);});ul.append(h('li',{},h('label',{for:id},cb,h('span',{},p))));});}
 function fillAreaSelect(sel,ph){sel.textContent='';sel.append(h('option',{value:''},ph));AREA_GROUPS.forEach(function(gr){var og=h('optgroup',{label:gr[0]});areaList(gr[1]).forEach(function(a){og.append(h('option',{value:a},a))});sel.append(og);});}
 
 /* ================= confetti ================= */
@@ -1995,7 +2151,7 @@ function admStatus(){
   decItems().forEach(function(r){var sel=h('select',{class:'input',id:'as-dec-'+r.k,onchange:mark});['open','done'].forEach(function(s){var o=h('option',{value:s},DEC_LABEL[s]);if(s===r.st)o.selected=true;sel.append(o)});
     p.append(h('div',{class:'arow'},h('b',{},r.label),h('div',{class:'two'},sel,h('input',{class:'input',id:'an-dec-'+r.k,value:r.note||'',maxlength:'80',oninput:mark}))));});
   p.append(h('h3',{},'공지 · 마감'));
-  p.append(h('label',{class:'field arow',for:'acNotice'},h('span',{},'공지'),h('textarea',{class:'input',id:'acNotice',maxlength:'200',oninput:mark},S.bconfig.notice||NOTICE_DEF)));
+  p.append(h('label',{class:'field arow',for:'acNotice'},h('span',{},'공지'),h('textarea',{class:'input',id:'acNotice',maxlength:'200',oninput:mark},noticeText())));
   p.append(h('label',{class:'field arow',for:'acDeadline'},h('span',{},'어릴 적 사진 마감'),h('input',{class:'input',id:'acDeadline',maxlength:'30',value:deadline(),oninput:mark})));
   p.append(h('div',{class:'row'},h('button',{class:'btn',type:'button',onclick:saveStatus},'모두 저장 · 바로 반영')));
 }
@@ -2107,9 +2263,9 @@ function initJelly(){$('#heroTitle').addEventListener('click',function(e){var c=
 
 /* ================= orchestration ================= */
 function renderLive(){
-  renderTicket();renderReady();renderNotice();renderRes();renderTodo();renderVotes();renderPhotoPanel();renderStrip();renderShop();renderCar();renderDraw();maybeSpin();fillFood();renderAdmin();
+  renderTicket();renderReady();renderNotice();renderRes();renderTodo();renderVotes();renderMoney();renderPhotoPanel();renderStrip();renderShop();renderCar();renderDraw();maybeSpin();fillFood();renderAdmin();
 }
-function renderVisualsWithPhotos(){renderRail(true);renderMenu();renderPlaces();renderPension();renderVotes();renderNight2();}
+function renderVisualsWithPhotos(){renderRail(true);renderMenu();renderPlaces();renderPension();renderVotes();renderNight2();renderPlayPlan();}
 function use(n){try{return (window.claude&&window.claude.use)?window.claude.use(n).catch(function(){return null}):Promise.resolve(null);}catch(e){return Promise.resolve(null);}}
 function subscribe(){
   var db=S.db,need={cars:1,riders:1,ps:1,bs:1},timer=setTimeout(function(){if(!S.loaded)setConn('ro','연결이 느려요');},10000);
@@ -2124,6 +2280,7 @@ function subscribe(){
   db.collection('votes').onSnapshot(function(s){S.votes=asMap(s);renderVotes();renderRail(true);if(admPane==='tally')renderAdmin();},onErr);
   db.collection('crew').onSnapshot(function(s){S.crew=asMap(s);renderDraw();maybeSpin();renderSteps();renderTicket();renderRail(true);if(admPane==='tally')renderAdmin();},onErr);
   db.doc('shop/list').onSnapshot(function(d){S.shop=d.exists?d.data():{};renderShop();},onErr);
+  db.collection('money').onSnapshot(function(s){S.money=asMap(s);renderMoney();},onErr);
   db.doc('board/state').onSnapshot(function(d){S.bstate=d.exists?d.data():{};firstDone('bs',d);renderRes();renderTodo();if(!S.admStatusDirty)renderAdmin();},onErr);
   db.doc('board/config').onSnapshot(function(d){S.bconfig=d.exists?d.data():{};renderNotice();renderPhotoPanel();},onErr);
   db.doc('board/photos').onSnapshot(function(d){S.bphotos=d.exists?d.data():{};renderVisualsWithPhotos();renderAdmin();},onErr);
@@ -2149,7 +2306,8 @@ function boot(){
   }).catch(function(){setConn('ro','보기 전용');});
 }
 function init(){
-  renderHeroTitle();renderStars();renderRail();renderPlay();renderVotes();renderMenu();renderPlaces();renderPension();renderMyst();renderNight2();renderMallow();renderPack();renderFoodToggles();
+  renderHeroTitle();renderStars();renderRail();renderPlay();renderPlayPlan();renderMoneyForm();
+  try{var mio=new IntersectionObserver(function(es){es.forEach(function(e){$('#mfab').classList.toggle('away',e.isIntersecting)})});mio.observe($('#money'));}catch(e){}renderVotes();renderMenu();renderPlaces();renderPension();renderMyst();renderNight2();renderMallow();renderPack();renderFoodToggles();
   S.mapMode=LS.get('mapMode','fit');renderMapTools();
   fillAreaSelect($('#dfArea'),'지역 고르기');fillAreaSelect($('#myArea'),'내 출발 지역 고르기');
   tick();setInterval(tick,1000);
